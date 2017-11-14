@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.mountunion.csc330.drunjk.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <Spinner
+        android:id="@+id/sexSpinner"
+        style = "@style/bacCalculatorStyle"
+        android:entries="@array/sexOptions"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
+    </Spinner>
+
+    <EditText
+        android:id="@+id/weight"
+        style = "@style/bacCalculatorStyle"
+        android:hint="Weight"
+        android:textSize="18sp"
+        android:inputType="number"
+        android:maxLength="3"
+        android:layout_below="@id/sexSpinner" />
+
+    <EditText
+        android:id="@+id/numDrinks"
+        style = "@style/bacCalculatorStyle"
+        android:hint="@string/numDrinks"
+        android:textSize="18sp"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_below="@id/weight" />
+
+    <Spinner
+        android:id="@+id/alcoholTypeSpinner"
+        style = "@style/bacCalculatorStyle"
+        android:entries="@array/alcoholTypes"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_below="@id/numDrinks">
+    </Spinner>
+
+    <LinearLayout
+        android:id="@+id/percentageLayout"
+        style = "@style/bacCalculatorStyle"
+        android:layout_below="@id/alcoholTypeSpinner" >
+
+        <EditText
+            android:id="@+id/alcoholPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="ignored for now"
+            android:inputType="number"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/percent"
+            android:paddingTop="10dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/timeElapsed"
+        style = "@style/bacCalculatorStyle"
+        android:hint="@string/hoursElapsed"
+        android:textSize="18sp"
+        android:inputType="numberDecimal"
+        android:maxLength="3"
+        android:layout_below="@id/percentageLayout" />
+
+    <Button
+        android:id="@+id/calculate_button"
+        style = "@style/bacCalculatorStyle"
+        android:text="@string/calculate"
+        android:onClick="calculateBac"
+        android:layout_below="@id/timeElapsed" />
+
+    <LinearLayout
+        style = "@style/bacCalculatorStyle"
+        android:layout_below="@id/calculate_button"
+        android:layout_marginTop="30dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Your BAC is: " />
+
+        <TextView
+            android:id="@+id/bacView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="0.0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text=" %" />
+
+    </LinearLayout>
+
+</RelativeLayout>

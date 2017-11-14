@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.mountunion.csc330.drunjk.AddContactActivity"
+    tools:showIn="@layout/activity_add_contact">
+
+    <TextView
+        android:id="@+id/newContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/bacCalculatorStyle"
+        android:text="New Contact"
+        android:textSize="40sp"
+        android:layout_marginBottom="30dp" />
+
+    <LinearLayout
+        android:id="@+id/contactNameLayout"
+        style = "@style/bacCalculatorStyle"
+        android:layout_below="@id/newContact" >
+
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:maxLength="30"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/lastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Last Name"
+            android:maxLength="30"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/phoneNumberLayout"
+        style = "@style/bacCalculatorStyle"
+        android:layout_below="@id/contactNameLayout" >
+
+        <EditText
+            android:id="@+id/phoneNumberFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="(     )"
+            android:maxLength="3"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/phoneNumberSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="3"
+            android:hint="       "
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/phoneNumberThird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="         "
+            android:maxLength="4"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/relation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Relation"
+        android:maxLength="20"
+        style = "@style/bacCalculatorStyle"
+        android:layout_below="@id/phoneNumberLayout"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/addContactButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relation"
+        style="@style/bacCalculatorStyle"
+        android:layout_marginTop="30dp"
+        android:onClick="addContact"
+        android:text="Create New Contact" />
+
+    <Button
+        android:id="@+id/addContactCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addContactButton"
+        style="@style/bacCalculatorStyle"
+        android:onClick="cancelAdd"
+        android:text="Cancel" />
+
+
+</RelativeLayout>

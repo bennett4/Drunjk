@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="edu.mountunion.csc330.drunjk.MainActivity">
+<item
+    android:id="@+id/action_calculator"
+    android:title="@string/calculate_bac"
+    android:icon="@drawable/calculator"
+    app:showAsAction="ifRoom" />
+<item
+    android:id="@+id/action_contacts"
+    android:icon="@android:drawable/ic_menu_crop"
+    android:title="@string/contacts"
+    app:showAsAction="ifRoom" />
+</menu>
