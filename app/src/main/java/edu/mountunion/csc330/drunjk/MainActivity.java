@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    boolean improperInput;
+    boolean properInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
-
-    }
+    } // end of method onCreateOptionsMenu
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -47,25 +46,25 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }
-    }
+        } // end of switch menu item selected
+    } // end of method onOptionsItemSelected
 
     public void calculateBac(View view) {
         Double bac = 100.0;
-        improperInput = true;
-        //test
+        properInput = true;
+
         bac = (((getOunces() * getNumberOfDrinks() * getPercentAlcohol()) * 5.14) /
                 (getWeight() * getPercentWater())) - (0.015 * getHoursElapsed());
 
         String bacString = bac + "";
         try {
             bacString = bacString.substring(0, 6);
-        }
+        } // end try to display bac with 4 digits to right of decimal
         catch (StringIndexOutOfBoundsException ex) {
-        }
-        if (improperInput) {
+        } // end catch if already less than shortened length
+        if (properInput) {
             ((TextView)findViewById(R.id.bacView)).setText(bacString);
-        }
+        } // end if properInput
     } // end of method calculateBac
 
     public Double getPercentWater() {
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             percentWater = 0.66; // 49
         } // end if sex is female
         else {
-            improperInput = false;
+            properInput = false;
             percentWater = 1.0;
             Toast.makeText(MainActivity.this, "Please Select Male or Female",
                     Toast.LENGTH_SHORT).show();
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         EditText weightEditText = (EditText)findViewById(R.id.weight);
         if (weightEditText.getText().toString().isEmpty()) {
             weight = 1.0;
-            improperInput = false;
+            properInput = false;
             Toast.makeText(MainActivity.this, "Please Enter a Valid Weight",
                     Toast.LENGTH_SHORT).show();
         } // end if no weight
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             } // end try valid weight entered
             catch (NumberFormatException nfe) {
                 weight = 1.0;
-                improperInput = false;
+                properInput = false;
                 Toast.makeText(MainActivity.this, "Please Enter a Valid Weight",
                         Toast.LENGTH_SHORT).show();
             } // end catch NumberFormatException
@@ -116,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         EditText numDrinksEditText = (EditText)findViewById(R.id.numDrinks);
         if (numDrinksEditText.getText().toString().isEmpty()) {
             numDrinks = 0;
-            improperInput = false;
+            properInput = false;
             Toast.makeText(MainActivity.this, "Please Enter Number of Drinks Consumed",
                     Toast.LENGTH_SHORT).show();
         } // end if no number of drinks
@@ -126,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             } // end try valid number of drinks
             catch (NumberFormatException nfe) {
                 numDrinks = 0;
-                improperInput = false;
+                properInput = false;
                 Toast.makeText(MainActivity.this, "Please Enter Number of Drinks Consumed",
                         Toast.LENGTH_SHORT).show();
             } // end catch NumberFormatException
@@ -152,31 +151,31 @@ public class MainActivity extends AppCompatActivity {
             } // end if type is liquor
             else {
                 percentAlcohol = 0.0;
-                improperInput = false;
+                properInput = false;
             } // end else need to enter an alcohol type
-        }
+        } // end if percentAlcohol is not entered, run through the default types for the percentage
         else {
             try {
                 if (Double.parseDouble(percentAlcoholEditText.getText().toString()) < 0) {
-                    improperInput = false;
+                    properInput = false;
                     Toast.makeText(MainActivity.this, "Please Enter a Valid Alcohol Percentage",
                             Toast.LENGTH_SHORT).show();
                 } // end if negative percent alcohol
                 else if (Double.parseDouble(percentAlcoholEditText.getText().toString()) > 100) {
-                    improperInput = false;
+                    properInput = false;
                     Toast.makeText(MainActivity.this, "Please Enter a Valid Alcohol Percentage",
                             Toast.LENGTH_SHORT).show();
                 } // end else if too large percent alcohol
                 else if ((Double.parseDouble(percentAlcoholEditText.getText().toString()) > 0) &&
                         (Double.parseDouble(percentAlcoholEditText.getText().toString()) <= 100)) {
                     percentAlcohol = Double.parseDouble(percentAlcoholEditText.getText().toString()) * 0.01;
-                } // end else if manually entered percent alcohol
+                } // end else if valid manually entered percent alcohol
             } catch (NumberFormatException nfe) {
-                improperInput = false;
+                properInput = false;
                 Toast.makeText(MainActivity.this, "Please Enter a Valid Alcohol Percentage",
                         Toast.LENGTH_SHORT).show();
-            }
-        }
+            } // end catch NumberFormatException
+        } // end else manually entered percent alcohol
         return percentAlcohol;
     } // end of method getPercentAlcohol
 
@@ -195,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         } // end if type is liquor
         else {
             ounces = 0.0;
-            improperInput = false;
+            properInput = false;
             Toast.makeText(MainActivity.this, "Please Select a Type of Alcohol",
                     Toast.LENGTH_SHORT).show();
         } // end else need to enter an alcohol type
@@ -207,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         EditText timeElapsedEditText = (EditText)findViewById(R.id.timeElapsed);
         if (timeElapsedEditText.getText().toString().isEmpty()) {
             hoursElapsed = 0.0;
-            improperInput = false;
+            properInput = false;
             Toast.makeText(MainActivity.this, "Please Enter the Time Elapsed",
                     Toast.LENGTH_SHORT).show();
         } // end if no time elapsed
@@ -216,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 hoursElapsed = Double.parseDouble(timeElapsedEditText.getText().toString());
             } // end try valid time elapsed
             catch (NumberFormatException nfe) {
-                improperInput = false;
+                properInput = false;
                 hoursElapsed = 0.0;
                 Toast.makeText(MainActivity.this, "Please Enter the Time Elapsed",
                         Toast.LENGTH_SHORT).show();

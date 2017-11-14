@@ -19,7 +19,7 @@
     <EditText
         android:id="@+id/weight"
         style = "@style/bacCalculatorStyle"
-        android:hint="Weight"
+        android:hint="@string/weight"
         android:textSize="18sp"
         android:inputType="number"
         android:maxLength="3"
@@ -52,7 +52,7 @@
             android:id="@+id/alcoholPercentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="ignored for now"
+            android:hint="@string/alcohol_percentage"
             android:inputType="number"
             android:textSize="18sp"
             tools:layout_editor_absoluteY="0dp"
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="Your BAC is: " />
+            android:text="@string/your_bac" />
 
         <TextView
             android:id="@+id/bacView"
