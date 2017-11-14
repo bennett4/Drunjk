@@ -13,8 +13,11 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    boolean improperInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +52,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculateBac(View view) {
         Double bac = 100.0;
+        improperInput = true;
         //test
         bac = (((getOunces() * getNumberOfDrinks() * getPercentAlcohol()) * 5.14) /
                 (getWeight() * getPercentWater())) - (0.015 * getHoursElapsed());
 
         String bacString = bac + "";
-        bacString = bacString.substring(0, 6);
-        ((TextView)findViewById(R.id.bacView)).setText(bacString);
+        try {
+            bacString = bacString.substring(0, 6);
+        }
+        catch (StringIndexOutOfBoundsException ex) {
+        }
+        if (improperInput) {
+            ((TextView)findViewById(R.id.bacView)).setText(bacString);
+        }
     } // end of method calculateBac
 
     public Double getPercentWater() {
@@ -69,7 +79,10 @@ public class MainActivity extends AppCompatActivity {
             percentWater = 0.66; // 49
         } // end if sex is female
         else {
-            throw new Error("they didn't enter a sex, make sure they do (add red border making them select one, etc)");
+            improperInput = false;
+            percentWater = 1.0;
+            Toast.makeText(MainActivity.this, "Please Select Male or Female",
+                    Toast.LENGTH_SHORT).show();
         } // end else need to enter sex
         return percentWater;
     } // end of method calculatePercentWater
@@ -78,11 +91,22 @@ public class MainActivity extends AppCompatActivity {
         Double weight;
         EditText weightEditText = (EditText)findViewById(R.id.weight);
         if (weightEditText.getText().toString().isEmpty()) {
-            throw new Error("they didn't enter a weight, make sure they do (add red border making them enter one, etc)");
+            weight = 1.0;
+            improperInput = false;
+            Toast.makeText(MainActivity.this, "Please Enter a Valid Weight",
+                    Toast.LENGTH_SHORT).show();
         } // end if no weight
         else {
-            weight = Double.parseDouble(weightEditText.getText().toString());
-            // weight = weight * 0.453592;  // Converts to kgs, not needed in this formula
+            try {
+                weight = Double.parseDouble(weightEditText.getText().toString());
+                // weight = weight * 0.453592;  // Converts to kgs, not needed for current formula (keeping in the event of new formula)
+            } // end try valid weight entered
+            catch (NumberFormatException nfe) {
+                weight = 1.0;
+                improperInput = false;
+                Toast.makeText(MainActivity.this, "Please Enter a Valid Weight",
+                        Toast.LENGTH_SHORT).show();
+            } // end catch NumberFormatException
         } // end else weight is valid
         return weight;
     } // end of method calculateWeight
@@ -91,30 +115,68 @@ public class MainActivity extends AppCompatActivity {
         Integer numDrinks;
         EditText numDrinksEditText = (EditText)findViewById(R.id.numDrinks);
         if (numDrinksEditText.getText().toString().isEmpty()) {
-            throw new Error("they didn't enter a number of drinks, make sure they do (add red border making them enter an amount, etc)");
+            numDrinks = 0;
+            improperInput = false;
+            Toast.makeText(MainActivity.this, "Please Enter Number of Drinks Consumed",
+                    Toast.LENGTH_SHORT).show();
         } // end if no number of drinks
         else {
-            numDrinks = Integer.parseInt(numDrinksEditText.getText().toString());
+            try {
+                numDrinks = Integer.parseInt(numDrinksEditText.getText().toString());
+            } // end try valid number of drinks
+            catch (NumberFormatException nfe) {
+                numDrinks = 0;
+                improperInput = false;
+                Toast.makeText(MainActivity.this, "Please Enter Number of Drinks Consumed",
+                        Toast.LENGTH_SHORT).show();
+            } // end catch NumberFormatException
         } // end else number of drinks is valid
         return numDrinks;
     } // end of method getNumberOfDrinks
 
     public Double getPercentAlcohol() {
-        Double percentAlcohol;
+        Double percentAlcohol = 1.01;
         Spinner alcoholTypeSpinner = (Spinner)findViewById(R.id.alcoholTypeSpinner);
         String alcoholType = alcoholTypeSpinner.getSelectedItem().toString();
-        if (alcoholType.equals("Beer")) {
-            percentAlcohol = .045;
-        } // end if type is beer
-        else if (alcoholType.equals("Wine")) {
-            percentAlcohol = 0.125;
-        } // end if type is wine
-        else if (alcoholType.equals("Liquor")) {
-            percentAlcohol = 0.40;
-        } // end if type is liquor
+        EditText percentAlcoholEditText = (EditText)findViewById(R.id.alcoholPercentage);
+
+        if (percentAlcoholEditText.getText().toString().isEmpty()) {
+            if (alcoholType.equals("Beer")) {
+                percentAlcohol = .045;
+            } // end if type is beer
+            else if (alcoholType.equals("Wine")) {
+                percentAlcohol = 0.125;
+            } // end if type is wine
+            else if (alcoholType.equals("Liquor")) {
+                percentAlcohol = 0.40;
+            } // end if type is liquor
+            else {
+                percentAlcohol = 0.0;
+                improperInput = false;
+            } // end else need to enter an alcohol type
+        }
         else {
-            throw new Error("they didn't enter a alcohol type, make sure they do (add red border making them select one, etc)");
-        } // end else need to enter an alcohol type
+            try {
+                if (Double.parseDouble(percentAlcoholEditText.getText().toString()) < 0) {
+                    improperInput = false;
+                    Toast.makeText(MainActivity.this, "Please Enter a Valid Alcohol Percentage",
+                            Toast.LENGTH_SHORT).show();
+                } // end if negative percent alcohol
+                else if (Double.parseDouble(percentAlcoholEditText.getText().toString()) > 100) {
+                    improperInput = false;
+                    Toast.makeText(MainActivity.this, "Please Enter a Valid Alcohol Percentage",
+                            Toast.LENGTH_SHORT).show();
+                } // end else if too large percent alcohol
+                else if ((Double.parseDouble(percentAlcoholEditText.getText().toString()) > 0) &&
+                        (Double.parseDouble(percentAlcoholEditText.getText().toString()) <= 100)) {
+                    percentAlcohol = Double.parseDouble(percentAlcoholEditText.getText().toString()) * 0.01;
+                } // end else if manually entered percent alcohol
+            } catch (NumberFormatException nfe) {
+                improperInput = false;
+                Toast.makeText(MainActivity.this, "Please Enter a Valid Alcohol Percentage",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
         return percentAlcohol;
     } // end of method getPercentAlcohol
 
@@ -132,7 +194,10 @@ public class MainActivity extends AppCompatActivity {
             ounces = 1.5;
         } // end if type is liquor
         else {
-            throw new Error("they didn't enter a alcohol type, make sure they do (add red border making them select one, etc)");
+            ounces = 0.0;
+            improperInput = false;
+            Toast.makeText(MainActivity.this, "Please Select a Type of Alcohol",
+                    Toast.LENGTH_SHORT).show();
         } // end else need to enter an alcohol type
         return ounces;
     } // end of method getOunces
@@ -141,10 +206,21 @@ public class MainActivity extends AppCompatActivity {
         Double hoursElapsed;
         EditText timeElapsedEditText = (EditText)findViewById(R.id.timeElapsed);
         if (timeElapsedEditText.getText().toString().isEmpty()) {
-            throw new Error("they didn't enter time elapsed, make sure they do (add red border making them enter an amount, etc)");
+            hoursElapsed = 0.0;
+            improperInput = false;
+            Toast.makeText(MainActivity.this, "Please Enter the Time Elapsed",
+                    Toast.LENGTH_SHORT).show();
         } // end if no time elapsed
         else {
-            hoursElapsed = Double.parseDouble(timeElapsedEditText.getText().toString());
+            try {
+                hoursElapsed = Double.parseDouble(timeElapsedEditText.getText().toString());
+            } // end try valid time elapsed
+            catch (NumberFormatException nfe) {
+                improperInput = false;
+                hoursElapsed = 0.0;
+                Toast.makeText(MainActivity.this, "Please Enter the Time Elapsed",
+                        Toast.LENGTH_SHORT).show();
+            } // end catch NumberFormatException
         } // end else time elapsed is valid
         return hoursElapsed;
     } // end of method getHoursElapsed

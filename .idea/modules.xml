@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Drunjk.iml" filepath="$PROJECT_DIR$/Drunjk.iml" />
-      <module fileurl="file://C:\ComputerScience\csc330\Drunjk\Drunjk.iml" filepath="C:\ComputerScience\csc330\Drunjk\Drunjk.iml" />
-      <module fileurl="file://H:\CSC330\Drunjk\.idea\Drunjk.iml" filepath="H:\CSC330\Drunjk\.idea\Drunjk.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\ComputerScience\csc330\Drunjk\app\app.iml" filepath="C:\ComputerScience\csc330\Drunjk\app\app.iml" />
     </modules>
   </component>
 </project>
