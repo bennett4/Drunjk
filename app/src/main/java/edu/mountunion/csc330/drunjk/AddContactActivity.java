@@ -1,7 +1,5 @@
 package edu.mountunion.csc330.drunjk;
 
-// last test
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
