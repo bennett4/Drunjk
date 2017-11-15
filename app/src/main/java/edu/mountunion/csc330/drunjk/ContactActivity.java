@@ -46,13 +46,13 @@ public class ContactActivity extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
         database = new Database(this);
         updateView();
-    }
+    } // end of method onCreate
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
-    }
+    } // end of method onCreateOptionsMenu
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -67,8 +67,8 @@ public class ContactActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }
-    }
+        } // end switch getting selected menu item
+    } // end method onOptionsItemSelected
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -79,21 +79,18 @@ public class ContactActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
+                    // permission was granted, do the phone-related task
 
-                } else {
+                } // end if permission was granted
+                else {
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                }
+                } // end else permission was denied
                 return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
-        }
-    }
+            } // end case to see if permission was granted or not
+        } // end switch to see if permission was granted or not
+    } // end of method onRequestPermissionResult
 
     public void showCallConfirmationDialog(Context context, int id) {
         Contact contact = database.selectById(id);
@@ -106,7 +103,7 @@ public class ContactActivity extends AppCompatActivity {
         alert.setPositiveButton("YES", call);
         alert.setNegativeButton("NO", call);
         alert.show();
-    }
+    } // end of method showCallConfirmationDialog
 
     private class PlayDialog implements DialogInterface.OnClickListener {
         @Override
@@ -120,19 +117,17 @@ public class ContactActivity extends AppCompatActivity {
             // Code to call the person
             // contactPhoneNumber stores the person's phone number of the button clicked
 
-
-
             int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE);
 
             if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
 
-                } // end if need to request permission
+                } // end if need to show permission request
                 else {
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},
                             MY_PERMISSIONS_REQUEST_CALL_PHONE);
-                }
-            }
+                } // end else
+            } // end if permission has not been granted yet
 
             Intent callIntent = new Intent(Intent.ACTION_CALL);
             callIntent.setData(Uri.parse("tel:" + contactPhoneNumber));
@@ -145,8 +140,8 @@ public class ContactActivity extends AppCompatActivity {
 
         } else if (id == -2) /* NO */  {
             // close the dialog box (leave in case we want to add something to do when they give this answer)
-        }
-    }
+        } // end else if the user selected not to call the person
+    } // end of method phoneAFriend
 
     public void updateView( ) {
         ArrayList<Contact> contacts = database.selectAll( );
@@ -171,6 +166,7 @@ public class ContactActivity extends AppCompatActivity {
 
             TextView contactsTextView = new TextView(this);
             contactsTextView.setText("Contacts");
+            contactsTextView.setGravity( Gravity.CENTER );
             contactsTextView.setTextSize(50);
 
             TextView emptyTextView = new TextView(this);
@@ -183,9 +179,7 @@ public class ContactActivity extends AppCompatActivity {
             grid.addView( emptyTextView2, ( int ) ( width / 4.8 ),
                     ViewGroup.LayoutParams.WRAP_CONTENT );
 
-
             int i = 0;
-
             for ( Contact contact : contacts ) {
                 // create the TextView for the contact's id
                 ids[i] = new TextView( this );
@@ -221,7 +215,7 @@ public class ContactActivity extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT );
 
                 i++;
-            }
+            } // end for running through contact list
 
             TextView newContactView = new TextView(this);
             newContactView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -243,16 +237,14 @@ public class ContactActivity extends AppCompatActivity {
 
             scrollView.addView( grid );
 
-
-
             setContentView( scrollView );
-        }
+        } // end if there is at least 1 contact in the list
 
-    }
+    } // end of method updateView
 
     public Context getContext() {
         return this;
-    }
+    } // end of method getContext
 
     private class ButtonHandler implements View.OnClickListener {
 
@@ -260,14 +252,14 @@ public class ContactActivity extends AppCompatActivity {
 
         public ButtonHandler(Button myButton) {
             this.myButton = myButton;
-        }
+        } // end of ButtonHandler constructor
 
         @Override
         public void onClick(View v) {
             contactId = myButton.getId();
             showCallConfirmationDialog(getContext(), contactId);
-        }
-    }
+        } // end of method onClick for the ButtonHandler class (for contact buttons)
+    } // end of class ButtonHandler (for contact buttons)
 
     private class AddButtonHandler implements View.OnClickListener {
 
@@ -275,15 +267,14 @@ public class ContactActivity extends AppCompatActivity {
 
         public AddButtonHandler(Button myButton) {
             this.myButton = myButton;
-        }
+        } // end of ButtonHandler constructor
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getContext(), AddContactActivity.class);
             getContext().startActivity(intent);
             finish();
-        }
-    }
+        } // end of method onClick for AddButtonHandler
+    } // end of class AddButtonHandler
 
-
-}
+} // end of class ContactActivity
