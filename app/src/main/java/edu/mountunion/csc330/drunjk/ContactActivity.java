@@ -37,6 +37,7 @@ public class ContactActivity extends AppCompatActivity {
     int contactId;
     String contactPhoneNumber;
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
+    public static final String EDIT_CONTACT_ID = "edu.mountunion.csc330.drunjk.editContactId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,6 +159,7 @@ public class ContactActivity extends AppCompatActivity {
             Button [] contactButtons = new Button[contacts.size( )];
             Button [] editButtons = new Button[contacts.size( )];
             ButtonHandler bh;
+            EditButtonHandler ebh;
 
             // retrieve width of screen
             Point size = new Point( );
@@ -205,6 +207,8 @@ public class ContactActivity extends AppCompatActivity {
                 // set up event handling
                 bh = new ButtonHandler( contactButtons[i] );
                 contactButtons[i].setOnClickListener( bh );
+                ebh = new EditButtonHandler( editButtons[i] );
+                editButtons[i].setOnClickListener( ebh );
 
                 // add the elements to grid
                 grid.addView( ids[i], width / 8,
@@ -272,6 +276,25 @@ public class ContactActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getContext(), AddContactActivity.class);
+            getContext().startActivity(intent);
+            finish();
+        } // end of method onClick for AddButtonHandler
+    } // end of class AddButtonHandler
+
+    private class EditButtonHandler implements View.OnClickListener {
+
+        private Button myButton;
+
+        public EditButtonHandler(Button myButton) {
+            this.myButton = myButton;
+        } // end of ButtonHandler constructor
+
+        @Override
+        public void onClick(View v) {
+            contactId = myButton.getId();
+            String stringContactId = contactId + "";
+            Intent intent = new Intent(getContext(), EditContactActivity.class);
+            intent.putExtra(EDIT_CONTACT_ID, stringContactId);
             getContext().startActivity(intent);
             finish();
         } // end of method onClick for AddButtonHandler

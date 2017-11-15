@@ -61,8 +61,8 @@ public class Database extends SQLiteOpenHelper {
 
         String sqlUpdate = "update " + TABLE_CONTACTS;
         sqlUpdate += " set " + FIRST_NAME + " = '" + firstName + "', ";
-        sqlUpdate += LAST_NAME + " = '" + lastName + "'";
-        sqlUpdate += PHONE_NUM + " = '" + phoneNum + "'";
+        sqlUpdate += LAST_NAME + " = '" + lastName + "', ";
+        sqlUpdate += PHONE_NUM + " = '" + phoneNum + "', ";
         sqlUpdate += RELATION + " = '" + relation + "'";
         sqlUpdate += " where " + ID + " = " + id;
 

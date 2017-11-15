@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.mountunion.csc330.drunjk.EditContactActivity">
+
+    <TextView
+        android:id="@+id/editContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/bacCalculatorStyle"
+        android:text="Edit Contact"
+        android:textSize="40sp"
+        android:layout_marginBottom="30dp" />
+
+    <LinearLayout
+        android:id="@+id/editContactNameLayout"
+        style = "@style/bacCalculatorStyle"
+        android:layout_below="@id/editContact" >
+
+        <EditText
+            android:id="@+id/editFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:maxLength="30"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editLastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Last Name"
+            android:maxLength="30"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/editPhoneNumberLayout"
+        style = "@style/bacCalculatorStyle"
+        android:layout_below="@id/editContactNameLayout" >
+
+        <EditText
+            android:id="@+id/editPhoneNumberFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="(     )"
+            android:maxLength="3"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editPhoneNumberSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="3"
+            android:hint="       "
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editPhoneNumberThird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="         "
+            android:maxLength="4"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editRelation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Relation"
+        android:maxLength="20"
+        style = "@style/bacCalculatorStyle"
+        android:layout_below="@id/editPhoneNumberLayout"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/editContactButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editRelation"
+        style="@style/bacCalculatorStyle"
+        android:layout_marginTop="30dp"
+        android:onClick="editContact"
+        android:text="Update Contact" />
+
+    <Button
+        android:id="@+id/deleteContactButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editContactButton"
+        android:background="@color/red"
+        style="@style/bacCalculatorStyle"
+        android:onClick="deleteContact"
+        android:text="Delete Contact" />
+
+    <Button
+        android:id="@+id/editContactCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/deleteContactButton"
+        style="@style/bacCalculatorStyle"
+        android:onClick="cancelEdit"
+        android:text="Cancel" />
+
+</RelativeLayout>
