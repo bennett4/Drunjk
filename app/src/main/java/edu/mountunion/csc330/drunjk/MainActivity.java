@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 this.startActivity(intent);
                 finish();
                 return true;
+            case R.id.action_settings:
+                Intent intents = new Intent(this, SettingsActivity.class);
+                this.startActivity(intents);
+                finish();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         } // end of switch menu item selected

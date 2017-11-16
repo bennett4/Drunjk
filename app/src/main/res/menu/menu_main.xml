@@ -12,4 +12,11 @@ tools:context="edu.mountunion.csc330.drunjk.MainActivity">
     android:icon="@android:drawable/ic_menu_crop"
     android:title="@string/contacts"
     app:showAsAction="ifRoom" />
+<item
+    android:id="@+id/action_settings"
+    android:title="@string/settings"
+    android:icon="@android:drawable/ic_menu_preferences"
+    app:showAsAction="ifRoom" />
+
+
 </menu>

@@ -14,6 +14,7 @@
         <item>Liquor</item>
     </string-array>
     <string name="title_activity_contact">ContactActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
     <string name="contacts">Contacts</string>
     <string name="calculate_bac">Calculate BAC</string>
     <string name="calculate">Calculate</string>
@@ -23,4 +24,5 @@
     <string name="alcohol_percentage">Alcohol Percentage</string>
     <string name="your_bac">Your Blood Alcohol Content is:</string>
     <string name="weight">Weight</string>
+    <string name="settings">Settings</string>
 </resources>
