@@ -21,6 +21,6 @@
     <string name="hoursElapsed">Hours Elapsed</string>
     <string name="title_activity_add_contact">AddContactActivity</string>
     <string name="alcohol_percentage">Alcohol Percentage</string>
-    <string name="your_bac">Your BAC is:</string>
+    <string name="your_bac">Your Blood Alcohol Content is: </string>
     <string name="weight">Weight</string>
 </resources>

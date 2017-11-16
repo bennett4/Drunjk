@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddContactActivity extends AppCompatActivity {
 
@@ -44,6 +45,19 @@ public class AddContactActivity extends AppCompatActivity {
         String phoneNumThird = ((EditText)findViewById(R.id.phoneNumberThird)).getText().toString();
         phoneNum = phoneNumFirst + phoneNumSecond + phoneNumThird;
         String relation = ((EditText)findViewById(R.id.relation)).getText().toString().trim();
+
+        if ((firstName.trim().equals("")) && (lastName.trim().equals(""))) {
+            Toast.makeText(AddContactActivity.this, "Please Enter a Name",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        } // end if names are both empty
+
+        if (phoneNum.length() != 10) {
+            Toast.makeText(AddContactActivity.this, "Please Enter 10 Digit Phone Number",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        } // end if incomplete phone number
+
         contact = new Contact(id, firstName, lastName, phoneNum, relation);
         id++;
         database.insert(contact);

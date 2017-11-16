@@ -96,7 +96,7 @@
         android:layout_below="@id/editContactButton"
         android:background="@color/red"
         style="@style/bacCalculatorStyle"
-        android:onClick="deleteContact"
+        android:onClick="deleteClicked"
         android:text="Delete Contact" />
 
     <Button
