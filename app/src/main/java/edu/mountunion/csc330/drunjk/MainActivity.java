@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         catch (StringIndexOutOfBoundsException ex) {
         } // end catch if already less than shortened length
         if (properInput) {
-            ((TextView)findViewById(R.id.bacView)).setText(bacString);
+            ((TextView)findViewById(R.id.bacView)).setText(" " + bacString);
         } // end if properInput
     } // end of method calculateBac
 
