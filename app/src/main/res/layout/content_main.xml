@@ -25,6 +25,7 @@
             android:id="@+id/weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:hint="@string/weight"
             android:textSize="18sp"
             android:inputType="number"
@@ -45,6 +46,7 @@
     <EditText
         android:id="@+id/numDrinks"
         style = "@style/bacCalculatorStyle"
+        android:textAlignment="center"
         android:hint="@string/numDrinks"
         android:textSize="18sp"
         android:inputType="number"
@@ -69,6 +71,7 @@
             android:id="@+id/alcoholPercentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:hint="@string/alcohol_percentage"
             android:inputType="numberDecimal"
             android:textSize="18sp"
@@ -88,6 +91,7 @@
     <EditText
         android:id="@+id/timeElapsed"
         style = "@style/bacCalculatorStyle"
+        android:textAlignment="center"
         android:hint="@string/hoursElapsed"
         android:textSize="18sp"
         android:inputType="numberDecimal"
