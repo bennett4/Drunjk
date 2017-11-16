@@ -16,14 +16,31 @@
         tools:layout_editor_absoluteX="0dp">
     </Spinner>
 
-    <EditText
-        android:id="@+id/weight"
+    <LinearLayout
+        android:id="@+id/weightLayout"
         style = "@style/bacCalculatorStyle"
-        android:hint="@string/weight"
-        android:textSize="18sp"
-        android:inputType="number"
-        android:maxLength="3"
-        android:layout_below="@id/sexSpinner" />
+        android:layout_below="@id/sexSpinner" >
+
+        <EditText
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/weight"
+            android:textSize="18sp"
+            android:inputType="number"
+            android:maxLength="3" />
+
+        <Spinner
+            android:id="@+id/weightSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/weightOptions"
+            android:dropDownWidth="wrap_content"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp">
+        </Spinner>
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/numDrinks"
@@ -32,7 +49,7 @@
         android:textSize="18sp"
         android:inputType="number"
         android:maxLength="2"
-        android:layout_below="@id/weight" />
+        android:layout_below="@id/weightLayout" />
 
     <Spinner
         android:id="@+id/alcoholTypeSpinner"
@@ -53,9 +70,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/alcohol_percentage"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textSize="18sp"
-            android:maxLength="2"
+            android:maxLength="4"
             tools:layout_editor_absoluteY="0dp"
             tools:layout_editor_absoluteX="0dp" />
 

@@ -60,11 +60,16 @@ public class ContactActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_calculator:
-                Intent intent = new Intent(this, MainActivity.class);
-                this.startActivity(intent);
+                Intent calculatorIntent = new Intent(this, MainActivity.class);
+                this.startActivity(calculatorIntent);
                 finish();
                 return true;
             case R.id.action_contacts:
+                return true;
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                this.startActivity(settingsIntent);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
