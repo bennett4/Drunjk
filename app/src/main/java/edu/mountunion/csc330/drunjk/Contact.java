@@ -1,9 +1,5 @@
 package edu.mountunion.csc330.drunjk;
 
-/**
- * Created by bennetmj on 11/10/2017.
- */
-
 public class Contact {
     private int id;
     private String firstName;

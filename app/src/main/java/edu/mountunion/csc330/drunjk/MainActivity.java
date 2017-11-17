@@ -1,5 +1,5 @@
 package edu.mountunion.csc330.drunjk;
-//hi2
+
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
