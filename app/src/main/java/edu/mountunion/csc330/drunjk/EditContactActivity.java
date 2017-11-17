@@ -80,7 +80,7 @@ public class EditContactActivity extends AppCompatActivity {
         this.startActivity(intent);
         finish();
         Toast.makeText(EditContactActivity.this, "Contact Updated",
-                Toast.LENGTH_SHORT).show();
+                Toast.LENGTH_LONG).show();
     } // end of method editContact
 
     public void deleteClicked(View v) {
@@ -103,7 +103,7 @@ public class EditContactActivity extends AppCompatActivity {
         public void onClick(DialogInterface dialogInterface, int id) {
             deleteContact(id);
         }
-    }
+    } // end of class PlayDialog
 
     public void deleteContact(int id) {
         if (id == -1)  /* YES */  {
