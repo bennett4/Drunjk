@@ -15,8 +15,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
+    private static final String BAC_ARRAY_KEY = "edu.mountunion.csc330.drunjk.ARRAY_OF_BAC";
+    private static final String EXTRA_INT = "edu.mountunion.csc330.drunjk.HOURS_ELAPSED";
     boolean properInput;
 
     @Override
@@ -74,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
         } // end catch if already less than shortened length
         if (properInput) {
             ((TextView)findViewById(R.id.bacView)).setText(" " + bacString);
+            Intent graphIntent = new Intent(this, GraphActivity.class);
+            ArrayList<Double> bacArray = new ArrayList<>();
+            for (int i = 1; i < 6; i++){
+                Double interratedBAC = bac - (0.015 * (getHoursElapsed()*i));
+                bacArray.add(interratedBAC);
+            }
+            graphIntent.putExtra(BAC_ARRAY_KEY, bacArray);
+            graphIntent.putExtra(EXTRA_INT, getHoursElapsed() );
+            this.startActivity(graphIntent);
         } // end if properInput
     } // end of method calculateBac
 
