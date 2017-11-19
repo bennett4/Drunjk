@@ -1,17 +1,17 @@
 package edu.mountunion.csc330.drunjk;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SettingsActivity extends AppCompatActivity{
+public class TipsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_tips);
     } // end of method onCreate
 
     @Override
@@ -35,16 +35,15 @@ public class SettingsActivity extends AppCompatActivity{
                 finish();
                 return true;
             case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, ContactActivity.class);
+                this.startActivity(settingsIntent);
+                finish();
                 return true;
             case R.id.action_tips:
-                Intent tipsIntent = new Intent(this, TipsActivity.class);
-                this.startActivity(tipsIntent);
-                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         } // end switch getting selected menu item
     } // end method onOptionsItemSelected
 
-
-} // end of class SettingsActivity
+} // end of class TipsActivity

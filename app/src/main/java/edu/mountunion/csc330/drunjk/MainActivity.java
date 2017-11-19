@@ -1,5 +1,5 @@
 package edu.mountunion.csc330.drunjk;
-//hi2
+
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
@@ -40,13 +40,18 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_calculator:
                 return true;
             case R.id.action_contacts:
-                Intent intent = new Intent(this, ContactActivity.class);
-                this.startActivity(intent);
+                Intent contactIntent = new Intent(this, ContactActivity.class);
+                this.startActivity(contactIntent);
                 finish();
                 return true;
             case R.id.action_settings:
-                Intent intents = new Intent(this, SettingsActivity.class);
-                this.startActivity(intents);
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                this.startActivity(settingsIntent);
+                finish();
+                return true;
+            case R.id.action_tips:
+                Intent tipsIntent = new Intent(this, TipsActivity.class);
+                this.startActivity(tipsIntent);
                 finish();
                 return true;
             default:
@@ -94,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
     public Double getWeight() {
         Double weight;
         EditText weightEditText = (EditText)findViewById(R.id.weight);
+        Spinner weightSpinner = (Spinner)findViewById(R.id.weightSpinner);
+        String weightUnit = weightSpinner.getSelectedItem().toString();
         if (weightEditText.getText().toString().isEmpty()) {
             weight = 1.0;
             properInput = false;
@@ -103,7 +110,12 @@ public class MainActivity extends AppCompatActivity {
         else {
             try {
                 weight = Double.parseDouble(weightEditText.getText().toString());
-                // weight = weight * 0.453592;  // Converts to kgs, not needed for current formula (keeping in the event of new formula)
+                if (weightUnit.equals("lbs")) {
+                    // leave weight the same
+                } // end if using pounds
+                else if (weightUnit.equals("kgs")) {
+                    weight = weight * 2.20462;
+                } // end else if using kilograms
             } // end try valid weight entered
             catch (NumberFormatException nfe) {
                 weight = 1.0;

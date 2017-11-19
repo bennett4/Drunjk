@@ -33,7 +33,8 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme" />
-        <activity android:name=".EditContactActivity"></activity>
+        <activity android:name=".EditContactActivity" />
+        <activity android:name=".TipsActivity" />
     </application>
 
 </manifest>

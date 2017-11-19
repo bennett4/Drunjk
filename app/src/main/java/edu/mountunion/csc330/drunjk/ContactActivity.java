@@ -43,8 +43,6 @@ public class ContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         database = new Database(this);
         updateView();
     } // end of method onCreate
@@ -60,11 +58,21 @@ public class ContactActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_calculator:
-                Intent intent = new Intent(this, MainActivity.class);
-                this.startActivity(intent);
+                Intent calculatorIntent = new Intent(this, MainActivity.class);
+                this.startActivity(calculatorIntent);
                 finish();
                 return true;
             case R.id.action_contacts:
+                return true;
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                this.startActivity(settingsIntent);
+                finish();
+                return true;
+            case R.id.action_tips:
+                Intent tipsIntent = new Intent(this, TipsActivity.class);
+                this.startActivity(tipsIntent);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
