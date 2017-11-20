@@ -10,7 +10,8 @@
         android:padding="10dp"
         android:text="TextView1 in vertical linear layout" />
 
-    <View
+    <ViewGroup
+        android:id="@+id/viewGroup"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"

@@ -1,10 +1,14 @@
 package edu.mountunion.csc330.drunjk;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 
@@ -14,17 +18,28 @@ import java.util.ArrayList;
 
 public class GraphActivity extends Activity {
     private double[] bacArray;
-    private int initialHour;
+    private double initialHour;
     private Draw drawView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph);
+        //setContentView(R.layout.activity_graph);
         Intent intent = getIntent();
         bacArray = intent.getDoubleArrayExtra("edu.mountunion.csc330.drunjk.ARRAY_OF_BAC");
-        initialHour = intent.getIntExtra("edu.mountunion.csc330.drunjk.HOURS_ELAPSED", 1);
-
+        initialHour = intent.getDoubleExtra("edu.mountunion.csc330.drunjk.HOURS_ELAPSED", 1.0);
+        //get status bar height
+        Resources res = getResources();
+        int statusBarHeight = 0;
+        int statusBarId = res.getIdentifier("status_bar_height", "dimen", "android" );
+        if (statusBarId > 0){
+            statusBarHeight = res.getDimensionPixelSize(statusBarId);
+        }
+        Point size = new Point( );
+        getWindowManager().getDefaultDisplay( ).getSize( size );
+        drawView = new Draw(this, size.x, size.y-statusBarHeight, bacArray, initialHour);
+        drawView.setBackgroundColor(Color.WHITE);
+        setContentView(drawView);
 
     } // end of method onCreate
 

@@ -79,13 +79,14 @@ public class MainActivity extends AppCompatActivity {
         if (properInput) {
             ((TextView)findViewById(R.id.bacView)).setText(" " + bacString);
             Intent graphIntent = new Intent(this, GraphActivity.class);
-            ArrayList<Double> bacArray = new ArrayList<>();
-            for (int i = 1; i < 6; i++){
-                Double interratedBAC = bac - (0.015 * (getHoursElapsed()*i));
-                bacArray.add(interratedBAC);
+            double[] bacArray = new double[5];
+            double newBac = (((getOunces() * getNumberOfDrinks() * getPercentAlcohol()) * 5.14) /
+                    (getWeight() * getPercentWater()));
+            for (int i = 0; i < 5; i++){
+                bacArray[i] = newBac - (0.015 * (getHoursElapsed()+i));
             }
             graphIntent.putExtra(BAC_ARRAY_KEY, bacArray);
-            graphIntent.putExtra(EXTRA_INT, getHoursElapsed() );
+            graphIntent.putExtra(EXTRA_INT, (double)getHoursElapsed() );
             this.startActivity(graphIntent);
         } // end if properInput
     } // end of method calculateBac
