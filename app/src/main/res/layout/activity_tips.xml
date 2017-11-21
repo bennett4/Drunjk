@@ -20,7 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/tipsHeadingLeft"
-        android:layout_below="@id/tipsTextView">
+        android:layout_below="@id/tipsTextView"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +59,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="@dimen/tipsBody"
         android:layout_marginRight="@dimen/tipsBody"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:id="@+id/highBACLayout"
@@ -66,7 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="@dimen/tipsHeadingLeft"
-        android:layout_below="@id/veryHighTips">
+        android:layout_below="@id/veryHighTips"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -104,7 +107,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="@dimen/tipsBody"
         android:layout_marginRight="@dimen/tipsBody"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:id="@+id/mediumBACLayout"
@@ -112,7 +116,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="@dimen/tipsHeadingLeft"
-        android:layout_below="@id/highTips">
+        android:layout_below="@id/highTips"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -150,7 +155,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="@dimen/tipsBody"
         android:layout_marginRight="@dimen/tipsBody"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:id="@+id/lowBACLayout"
@@ -158,7 +164,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="@dimen/tipsHeadingLeft"
-        android:layout_below="@id/mediumTips">
+        android:layout_below="@id/mediumTips"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -196,6 +203,36 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="@dimen/tipsBody"
         android:layout_marginRight="@dimen/tipsBody"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/identify"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
+        android:layout_toLeftOf="@+id/mediumTips"
+        android:layout_toStartOf="@+id/mediumTips"
+        android:text="Identify a drunk"
+        android:onClick="idADrunkTips"/>
+
+    <Button
+        android:id="@+id/helpADrunk"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/lowTips"
+        android:layout_alignStart="@+id/lowTips"
+        android:layout_alignTop="@+id/identify"
+        android:text="Help a drunk" />
+
+    <Button
+        android:id="@+id/poison"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/helpADrunk"
+        android:layout_toEndOf="@+id/veryHighBACLayout"
+        android:layout_toRightOf="@+id/veryHighBACLayout"
+        android:text="Identify alcohol poisoning" />
 
 </RelativeLayout>
