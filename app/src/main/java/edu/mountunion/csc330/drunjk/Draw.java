@@ -133,12 +133,12 @@ public class Draw extends View {
         double newLow;
         if(lineEndY > fromBottom){
             newLow = intersect(lowerLimit, topToBottom, fromBottom);
-            Log.v("GraphNums", "lineEndY starts at " + lineEndY);
+            Log.v("GraphNums", "lineEndY starts at " + lineEndY + "lineStartY " + lineStartY);
             lineEndY= getAlternativePlacementHeight(newLow, lowerLimit, topToBottom, fromBottom);
             Log.v("GraphNums", "lineEndY starts at " + lineEndY + " newLow " + newLow + " lowerLimit " + lowerLimit + " tTB " + topToBottom + " fB " + fromBottom);
             int lineEndX = getPlacementWidth(newLow, leftToRight, overLimit, fromLeft);
             Log.v("GraphNums", "lineEndX "+lineEndX );
-            canvas.drawLine(tikO[0]-tikOffset, lineStartY, lineEndX, fromBottom, paint);
+            canvas.drawLine(tikO[0]-tikOffset, lineStartY, lineEndX, lineEndY, paint);
         }
         else{
             canvas.drawLine(tikO[0]-tikOffset, lineStartY, tikO[4], lineEndY, paint);
