@@ -251,6 +251,39 @@ public class ContactActivity extends AppCompatActivity {
 
             setContentView( scrollView );
         } // end if there is at least 1 contact in the list
+        else {
+            ScrollView scrollView = new ScrollView( this );
+            GridLayout grid = new GridLayout( this );
+            grid.setRowCount( 1 );
+            grid.setColumnCount( 3 );
+
+            // retrieve width of screen
+            Point size = new Point( );
+            getWindowManager( ).getDefaultDisplay( ).getSize( size );
+            int width = size.x;
+
+            TextView newContactView = new TextView(this);
+            newContactView.setGravity(Gravity.CENTER_HORIZONTAL);
+            newContactView.setText(contacts.size() + 1 + "");
+            newContactView.setTextSize(30);
+
+            Button newContactButton = new Button(this);
+            newContactButton.setText("New Contact");
+            newContactButton.setTextSize(27);
+            newContactButton.setTextColor(Color.rgb(125, 125, 125));
+            newContactButton.setTransformationMethod(null);
+            AddButtonHandler newButtonHandler = new AddButtonHandler(newContactButton);
+            newContactButton.setOnClickListener(newButtonHandler);
+
+            grid.addView(newContactView, width / 8,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            grid.addView(newContactButton, (int) (width * .65),
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            scrollView.addView( grid );
+
+            setContentView( scrollView );
+        }
 
     } // end of method updateView
 
