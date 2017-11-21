@@ -131,11 +131,11 @@ public class Draw extends View {
         int tikDown = fromBottom+heightOffset;
         int hour = (int)initialHour;
         int dotHeight;
-        int lineStartY=getAlternativePlacementHeight(bacArray[0]+.015, lowerLimit, topToBottom, fromBottom);
+        int lineStartY=getAlternativePlacementHeight(overLimit, lowerLimit, topToBottom, fromBottom);
         int lineEndY=getAlternativePlacementHeight(bacArray[4], lowerLimit, topToBottom, fromBottom);
         double newLow;
         if(lineEndY > fromBottom){
-            newLow = intersect(bacArray[0]+.015, topToBottom, fromBottom);
+            newLow = intersect(overLimit, topToBottom, fromBottom);
             Log.v("GraphNums", "newLow "+newLow);
             int lineEndX = getPlacementWidth(newLow, leftToRight, overLimit, fromLeft);
             lineEndY= getAlternativePlacementHeight(newLow, lowerLimit, topToBottom, fromBottom);
@@ -222,9 +222,12 @@ public class Draw extends View {
     }
 
     private double findNearest() {                                        // takes the first in the array of BAC values
-        double ret = bacArray[0];                                         // tries to fit it with a nice scale
+        double ret = bacArray[0]+.015;
+        if (bacArray[0] == 0.0){
+            ret = bacArray[0];
+        }                                         // tries to fit it with a nice scale
         for (int i = 0; i < 31; i++){
-            double currentNum =  bacArray[0]+(i*0.001);
+            double currentNum =  ret+(i*0.001);
             String bacString = currentNum + "";
             String nuString = "";
             try {
