@@ -107,7 +107,7 @@ public class EditContactActivity extends AppCompatActivity {
 
     public void deleteContact(int id) {
         if (id == -1)  /* YES */  {
-//            database.deleteById(contactId);
+            database.deleteById(contactId);
             Intent intent = new Intent(this, ContactActivity.class);
             this.startActivity(intent);
             finish();
