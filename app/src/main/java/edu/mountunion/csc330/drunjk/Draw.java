@@ -63,6 +63,9 @@ public class Draw extends View {
         int topToBottom = fromBottom-fromTop;
         int leftToRight = fromRight-fromLeft;
         double overLimit = bacArray[0]+.015;
+        if (bacArray[0] == 0.0){
+            overLimit = bacArray[0];
+        }
         double upperLimit;
         double lowerLimit;
 
@@ -121,23 +124,24 @@ public class Draw extends View {
         canvas.drawLine(fromLeft, fromBottom, fromRight, fromBottom, paint);
 
         String retVal = "Your Current Blood Alcohol Content is: " + bacString[0] + "%";
-        canvas.drawText(retVal, 12*weightOffset, 90*heightOffset, paint);
+        canvas.drawText(retVal, 10*weightOffset, 90*heightOffset, paint);
 
         int[] tikO = tikOver(fromLeft, tikOffset);
         int tikUp = fromBottom-heightOffset;
         int tikDown = fromBottom+heightOffset;
         int hour = (int)initialHour;
         int dotHeight;
-        int lineStartY=getAlternativePlacementHeight(bacArray[0]+.015, lowerLimit, topToBottom, fromBottom);
+        int lineStartY=getAlternativePlacementHeight(overLimit, lowerLimit, topToBottom, fromBottom);
         int lineEndY=getAlternativePlacementHeight(bacArray[4], lowerLimit, topToBottom, fromBottom);
         double newLow;
         if(lineEndY > fromBottom){
-            newLow = intersect(lowerLimit, topToBottom, fromBottom);
-            Log.v("GraphNums", "lineEndY starts at " + lineEndY + "lineStartY " + lineStartY);
-            lineEndY= getAlternativePlacementHeight(newLow, lowerLimit, topToBottom, fromBottom);
-            Log.v("GraphNums", "lineEndY starts at " + lineEndY + " newLow " + newLow + " lowerLimit " + lowerLimit + " tTB " + topToBottom + " fB " + fromBottom);
+            newLow = intersect(overLimit, topToBottom, fromBottom);
+            Log.v("GraphNums", "newLow "+newLow);
             int lineEndX = getPlacementWidth(newLow, leftToRight, overLimit, fromLeft);
-            Log.v("GraphNums", "lineEndX "+lineEndX );
+            lineEndY= getAlternativePlacementHeight(newLow, lowerLimit, topToBottom, fromBottom);
+            Log.v("GraphNums", "lineEndY starts at " + lineEndY + " lineStartY " + lineStartY+"lineEndX "+lineEndX );
+            Log.v("GraphNums", "lineEndY starts at " + lineEndY + " newLow " + newLow + " lowerLimit " + lowerLimit + " tTB " + topToBottom + " fB " + fromBottom);
+
             canvas.drawLine(tikO[0]-tikOffset, lineStartY, lineEndX, lineEndY, paint);
         }
         else{
@@ -161,6 +165,15 @@ public class Draw extends View {
         canvas.rotate(270f, 50, 50);
         canvas.drawText("BAC",0-36*heightOffset, 7*weightOffset, paint);
         canvas.restore();
+    }
+
+    private double intersect(double lowerLimit, int topToBottom, int fromBottom){
+        double ret = 0;
+        while (getAlternativePlacementHeight(ret, lowerLimit, topToBottom, fromBottom) > 0){
+            lowerLimit = lowerLimit+.0003;
+            ret++;
+        }
+        return ret;
     }
 
     private int getPlacementWidth(double newLow, int leftToRight, double overLimit, int fromLeft) {
@@ -192,10 +205,8 @@ public class Draw extends View {
                 ret--;
             }
         }
-        Log.v("GraphNums", "ret before "+ret );
         ret = ret*(topToBottom/100);
         ret = fromBottom-ret;
-        Log.v("GraphNums", "ret after "+ret );
         return ret;
     }
 
@@ -211,9 +222,12 @@ public class Draw extends View {
     }
 
     private double findNearest() {                                        // takes the first in the array of BAC values
-        double ret = bacArray[0];                                         // tries to fit it with a nice scale
+        double ret = bacArray[0]+.015;
+        if (bacArray[0] == 0.0){
+            ret = bacArray[0];
+        }                                         // tries to fit it with a nice scale
         for (int i = 0; i < 31; i++){
-            double currentNum =  bacArray[0]+(i*0.001);
+            double currentNum =  ret+(i*0.001);
             String bacString = currentNum + "";
             String nuString = "";
             try {
@@ -224,14 +238,6 @@ public class Draw extends View {
             if (nearest(nuString)){
                 return currentNum;
             }
-        }
-        return ret;
-    }
-
-    private double intersect(double lowerLimit, int topToBottom, int fromBottom){
-        double ret = lowerLimit;
-        while (getAlternativePlacementHeight(ret, lowerLimit, topToBottom, fromBottom) > 0){
-            ret = ret+.0003;
         }
         return ret;
     }
