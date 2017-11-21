@@ -1,5 +1,5 @@
 package edu.mountunion.csc330.drunjk;
-//hi2
+
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
@@ -15,8 +15,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
+    private static final String BAC_ARRAY_KEY = "edu.mountunion.csc330.drunjk.ARRAY_OF_BAC";
+    private static final String EXTRA_INT = "edu.mountunion.csc330.drunjk.HOURS_ELAPSED";
     boolean properInput;
 
     @Override
@@ -40,8 +44,18 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_calculator:
                 return true;
             case R.id.action_contacts:
-                Intent intent = new Intent(this, ContactActivity.class);
-                this.startActivity(intent);
+                Intent contactIntent = new Intent(this, ContactActivity.class);
+                this.startActivity(contactIntent);
+                finish();
+                return true;
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                this.startActivity(settingsIntent);
+                finish();
+                return true;
+            case R.id.action_tips:
+                Intent tipsIntent = new Intent(this, TipsActivity.class);
+                this.startActivity(tipsIntent);
                 finish();
                 return true;
             default:
@@ -64,6 +78,16 @@ public class MainActivity extends AppCompatActivity {
         } // end catch if already less than shortened length
         if (properInput) {
             ((TextView)findViewById(R.id.bacView)).setText(" " + bacString);
+            Intent graphIntent = new Intent(this, GraphActivity.class);
+            double[] bacArray = new double[5];
+            double newBac = (((getOunces() * getNumberOfDrinks() * getPercentAlcohol()) * 5.14) /
+                    (getWeight() * getPercentWater()));
+            for (int i = 0; i < 5; i++){
+                bacArray[i] = newBac - (0.015 * (getHoursElapsed()+i));
+            }
+            graphIntent.putExtra(BAC_ARRAY_KEY, bacArray);
+            graphIntent.putExtra(EXTRA_INT, (double)getHoursElapsed() );
+            this.startActivity(graphIntent);
         } // end if properInput
     } // end of method calculateBac
 
@@ -89,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
     public Double getWeight() {
         Double weight;
         EditText weightEditText = (EditText)findViewById(R.id.weight);
+        Spinner weightSpinner = (Spinner)findViewById(R.id.weightSpinner);
+        String weightUnit = weightSpinner.getSelectedItem().toString();
         if (weightEditText.getText().toString().isEmpty()) {
             weight = 1.0;
             properInput = false;
@@ -98,7 +124,12 @@ public class MainActivity extends AppCompatActivity {
         else {
             try {
                 weight = Double.parseDouble(weightEditText.getText().toString());
-                // weight = weight * 0.453592;  // Converts to kgs, not needed for current formula (keeping in the event of new formula)
+                if (weightUnit.equals("lbs")) {
+                    // leave weight the same
+                } // end if using pounds
+                else if (weightUnit.equals("kgs")) {
+                    weight = weight * 2.20462;
+                } // end else if using kilograms
             } // end try valid weight entered
             catch (NumberFormatException nfe) {
                 weight = 1.0;

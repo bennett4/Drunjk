@@ -8,6 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NightTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/darkPrim</item>
+        <item name="colorPrimaryDark">@color/darkPrimDark</item>
+        <item name="colorAccent">@color/darkAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout">@color/darkBlue</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

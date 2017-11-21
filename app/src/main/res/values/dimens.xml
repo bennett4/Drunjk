@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="tipsHeadingLeft">20dp</dimen>
+    <dimen name="tipsBodyLeft">55dp</dimen>
 </resources>

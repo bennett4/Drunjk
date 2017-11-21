@@ -27,7 +27,7 @@ public class Database extends SQLiteOpenHelper {
         sqlCreate += " text, " + LAST_NAME + " text, " + PHONE_NUM;
         sqlCreate += " text, " + RELATION + " text )" ;
         db.execSQL( sqlCreate );
-    }
+    } // end of method onCreate
 
     public void onUpgrade( SQLiteDatabase db,
                            int oldVersion, int newVersion ) {
@@ -35,7 +35,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL( "drop table if exists " + TABLE_CONTACTS );
         // Re-create tables
         onCreate( db );
-    }
+    } // end of method onUpgrade
 
     public void insert( Contact contacts ) {
         SQLiteDatabase db = this.getWritableDatabase( );
@@ -45,7 +45,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL( sqlInsert );
         db.close( );
-    }
+    } // end of method insert
 
     public void deleteById( int id ) {
         SQLiteDatabase db = this.getWritableDatabase( );
@@ -54,7 +54,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL( sqlDelete );
         db.close( );
-    }
+    } // end of method deleteById
 
     public void updateById( int id, String firstName, String lastName, String phoneNum, String relation ) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -68,7 +68,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL( sqlUpdate );
         db.close( );
-    }
+    } // end of method updateById
 
     public ArrayList<Contact> selectAll( ) {
         String sqlQuery = "select * from " + TABLE_CONTACTS;
@@ -82,10 +82,10 @@ public class Database extends SQLiteOpenHelper {
                     = new Contact( Integer.parseInt(cursor.getString(0)), cursor.getString(1),
                                    cursor.getString(2), cursor.getString(3), cursor.getString(4) );
             contacts.add( currentContact );
-        }
+        } // end while
         db.close( );
         return contacts;
-    }
+    } // end of method selectAll
 
     public Contact selectById( int id ) {
         String sqlQuery = "select * from " + TABLE_CONTACTS;
@@ -99,5 +99,5 @@ public class Database extends SQLiteOpenHelper {
             contact = new Contact( Integer.parseInt(cursor.getString(0)), cursor.getString(1),
                     cursor.getString(2), cursor.getString(3), cursor.getString(4) );
         return contact;
-    }
-}
+    } // end of method selectById
+} // end of class Database
