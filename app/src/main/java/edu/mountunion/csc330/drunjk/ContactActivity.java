@@ -299,7 +299,7 @@ public class ContactActivity extends AppCompatActivity {
             scrollView.addView( grid );
 
             setContentView( scrollView );
-        }
+        } // end else (no contacts yet)
 
     } // end of method updateView
 
