@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
         bac = (((getOunces() * getNumberOfDrinks() * getPercentAlcohol()) * 5.14) /
                 (getWeight() * getPercentWater())) - (0.015 * getHoursElapsed());
 
+        if (bac < 0) {
+            bac = 0.0;
+        } // end if bac is negative
         String bacString = bac + "";
         try {
             bacString = bacString.substring(0, 6);
@@ -84,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
                     (getWeight() * getPercentWater()));
             for (int i = 0; i < 5; i++){
                 bacArray[i] = newBac - (0.015 * (getHoursElapsed()+i));
+                if (bacArray[i] < 0) {
+                    bacArray[i] = 0.0;
+                } // end if bac is negative
             }
             graphIntent.putExtra(BAC_ARRAY_KEY, bacArray);
             graphIntent.putExtra(EXTRA_INT, (double)getHoursElapsed() );
