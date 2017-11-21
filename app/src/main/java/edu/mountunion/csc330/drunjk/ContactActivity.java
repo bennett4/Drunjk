@@ -194,7 +194,7 @@ public class ContactActivity extends AppCompatActivity {
                 // create the TextView for the contact's id
                 ids[i] = new TextView( this );
                 ids[i].setGravity( Gravity.CENTER );
-                ids[i].setText( "" + contact.getId( ) );
+                ids[i].setText( "" + (i + 1) );
                 ids[i].setTextSize(30);
 
                 // create the button
@@ -251,16 +251,32 @@ public class ContactActivity extends AppCompatActivity {
 
             setContentView( scrollView );
         } // end if there is at least 1 contact in the list
+
         else {
             ScrollView scrollView = new ScrollView( this );
             GridLayout grid = new GridLayout( this );
-            grid.setRowCount( 1 );
+            grid.setRowCount( 2 );
             grid.setColumnCount( 3 );
 
             // retrieve width of screen
             Point size = new Point( );
             getWindowManager( ).getDefaultDisplay( ).getSize( size );
             int width = size.x;
+
+            TextView contactsTextView = new TextView(this);
+            contactsTextView.setText("Contacts");
+            contactsTextView.setGravity( Gravity.CENTER );
+            contactsTextView.setTextSize(50);
+
+            TextView emptyTextView = new TextView(this);
+            TextView emptyTextView2 = new TextView(this);
+
+            grid.addView( emptyTextView, width / 8,
+                    ViewGroup.LayoutParams.WRAP_CONTENT );
+            grid.addView( contactsTextView, ( int ) ( width * .65 ),
+                    ViewGroup.LayoutParams.WRAP_CONTENT );
+            grid.addView( emptyTextView2, ( int ) ( width / 4.8 ),
+                    ViewGroup.LayoutParams.WRAP_CONTENT );
 
             TextView newContactView = new TextView(this);
             newContactView.setGravity(Gravity.CENTER_HORIZONTAL);

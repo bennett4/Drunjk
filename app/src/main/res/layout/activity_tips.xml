@@ -56,7 +56,8 @@
         android:text="you're almost there"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/tipsBodyLeft"
+        android:layout_marginLeft="@dimen/tipsBody"
+        android:layout_marginRight="@dimen/tipsBody"
         android:textSize="16sp" />
 
     <LinearLayout
@@ -101,7 +102,8 @@
         android:text="relax chief"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/tipsBodyLeft"
+        android:layout_marginLeft="@dimen/tipsBody"
+        android:layout_marginRight="@dimen/tipsBody"
         android:textSize="16sp" />
 
     <LinearLayout
@@ -146,7 +148,8 @@
         android:text="nice"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/tipsBodyLeft"
+        android:layout_marginLeft="@dimen/tipsBody"
+        android:layout_marginRight="@dimen/tipsBody"
         android:textSize="16sp" />
 
     <LinearLayout
@@ -191,7 +194,8 @@
         android:text="keep drinking"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/tipsBodyLeft"
+        android:layout_marginLeft="@dimen/tipsBody"
+        android:layout_marginRight="@dimen/tipsBody"
         android:textSize="16sp" />
 
 </RelativeLayout>
