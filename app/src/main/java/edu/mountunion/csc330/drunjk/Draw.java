@@ -1,15 +1,19 @@
 package edu.mountunion.csc330.drunjk;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 /**
  * Created by marianga on 11/19/2017.
@@ -48,8 +52,6 @@ public class Draw extends View {
         init();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onDraw(Canvas canvas) {
         int heightOffset = height/100;
@@ -61,7 +63,7 @@ public class Draw extends View {
         int tikOffset = (fromRight-fromLeft)/5;
         int tikOffsetV = (fromBottom-fromTop)/6;
         int topToBottom = fromBottom-fromTop;
-        int leftToRight = fromRight-fromLeft;
+        //int leftToRight = fromRight-fromLeft;
         double overLimit = bacArray[0]+.015;
         if (bacArray[0] == 0.0){
             overLimit = bacArray[0];
@@ -84,14 +86,13 @@ public class Draw extends View {
         for (int i = 0; i < 6; i++) {
             canvas.drawLine(tikLeft, tikD[i], tikRight, tikD[i], paint);
         }
-        if (bacArray[0]-0.075 < 0) {
+        if (overLimit < 0.090) {
             for (int i = 0; i < 6; i++) {
                 String bacText = (.09-(.015*i))+"";
-                if (bacText.length() == 4) {
-                    canvas.drawText(bacText, tikLeft - (9 * weightOffset), tikD[i] + heightOffset, paint);
-                }else{
-                    canvas.drawText(bacText, tikLeft - (11 * weightOffset), tikD[i] + heightOffset, paint);
-                }
+                float lengBacText = paint.measureText(bacText);
+                float overBacText = tikLeft - lengBacText - 10;
+                canvas.drawText(bacText, overBacText, tikD[i] + heightOffset, paint);
+
             }
             upperLimit = .09;
             lowerLimit = (.09-(.015*6));
@@ -105,11 +106,14 @@ public class Draw extends View {
                 } // end try to display bac with 5 digits
                 catch (StringIndexOutOfBoundsException ex) {
                 } // end catch if already less than shortened length
+
                 canvas.drawText(bacText, tikLeft - (11 * weightOffset), tikD[i] + heightOffset, paint);
             }
             upperLimit = init;
             lowerLimit = (init-(.015*6));
         }
+        // horizontal line
+        canvas.drawLine(fromLeft, fromBottom, fromRight, fromBottom, paint);
         if(.08 <= upperLimit && .08 > lowerLimit){
             paint.setColor(Color.GRAY);
             int legalLimitHeight = getPlacementHeight(.08, lowerLimit, topToBottom, fromBottom);
@@ -117,31 +121,36 @@ public class Draw extends View {
             paint.setColor(Color.BLACK);
             canvas.drawText(".08", fromRight, legalLimitHeight+heightOffset, paint);
         }
+        else if (.08 <= lowerLimit){
+            paint.setStrokeWidth(4.0f);
+            paint.setColor(Color.GRAY);
+            int legalLimitHeight = getPlacementHeight(.08, lowerLimit, topToBottom, fromBottom);
+            canvas.drawLine(fromLeft, legalLimitHeight, fromRight, legalLimitHeight, paint);
+            paint.setColor(Color.BLACK);
+            canvas.drawText(".08", fromRight+10, legalLimitHeight+heightOffset, paint);
+            paint.setStrokeWidth(10.0f);
+        }
 
         // vertical line
         canvas.drawLine(fromLeft, fromTop, fromLeft, fromBottom, paint);
-        // horizontal line
-        canvas.drawLine(fromLeft, fromBottom, fromRight, fromBottom, paint);
 
         String retVal = "Your Current Blood Alcohol Content is: " + bacString[0] + "%";
-        canvas.drawText(retVal, 10*weightOffset, 90*heightOffset, paint);
+        float lengRetVal = paint.measureText(retVal);
+        float retValWidth = (width-lengRetVal)/2;
+        canvas.drawText(retVal, retValWidth, 90*heightOffset, paint);
 
         int[] tikO = tikOver(fromLeft, tikOffset);
         int tikUp = fromBottom-heightOffset;
         int tikDown = fromBottom+heightOffset;
         int hour = (int)initialHour;
         int dotHeight;
-        int lineStartY=getAlternativePlacementHeight(overLimit, lowerLimit, topToBottom, fromBottom);
-        int lineEndY=getAlternativePlacementHeight(bacArray[4], lowerLimit, topToBottom, fromBottom);
-        double newLow;
-        if(lineEndY > fromBottom){
-            newLow = intersect(overLimit, topToBottom, fromBottom);
-            Log.v("GraphNums", "newLow "+newLow);
-            int lineEndX = getPlacementWidth(newLow, leftToRight, overLimit, fromLeft);
-            lineEndY= getAlternativePlacementHeight(newLow, lowerLimit, topToBottom, fromBottom);
-            Log.v("GraphNums", "lineEndY starts at " + lineEndY + " lineStartY " + lineStartY+"lineEndX "+lineEndX );
-            Log.v("GraphNums", "lineEndY starts at " + lineEndY + " newLow " + newLow + " lowerLimit " + lowerLimit + " tTB " + topToBottom + " fB " + fromBottom);
+        int lineStartY = getAlternativePlacementHeight(overLimit, lowerLimit, topToBottom, fromBottom);
+        int lineEndY = getAlternativePlacementHeight(bacArray[4], lowerLimit, topToBottom, fromBottom);
+        float newLow;
 
+        if(lineEndY == fromBottom){
+            newLow = intersect(topToBottom, fromBottom, lowerLimit);
+            float lineEndX = getPlacementWidth(newLow, tikOffset, fromLeft);
             canvas.drawLine(tikO[0]-tikOffset, lineStartY, lineEndX, lineEndY, paint);
         }
         else{
@@ -149,7 +158,7 @@ public class Draw extends View {
         }
         for (int i = 0; i < 5; i++) {
             canvas.drawLine(tikO[i], tikUp, tikO[i], tikDown, paint);
-            canvas.drawText((hour+i)+"", tikO[i]-weightOffset, tikDown+3*heightOffset, paint);
+            canvas.drawText((hour+i)+"", tikO[i]-10, tikDown+45, paint);
             dotHeight = getPlacementHeight(bacArray[i], lowerLimit, topToBottom, fromBottom);
             paint.setColor(Color.RED);
             canvas.drawLine(tikO[i], dotHeight-weightOffset, tikO[i], dotHeight+weightOffset, paint);
@@ -160,35 +169,45 @@ public class Draw extends View {
         // graph title?
 
         paint.setTextSize(45.0f);
-        canvas.drawText("Hours", 55*weightOffset, 80*heightOffset, paint);
+        canvas.drawText("Hours", 55*weightOffset, fromBottom+140, paint);
         canvas.save();
         canvas.rotate(270f, 50, 50);
         canvas.drawText("BAC",0-36*heightOffset, 7*weightOffset, paint);
         canvas.restore();
     }
 
-    private double intersect(double lowerLimit, int topToBottom, int fromBottom){
-        double ret = 0;
-        while (getAlternativePlacementHeight(ret, lowerLimit, topToBottom, fromBottom) > 0){
-            lowerLimit = lowerLimit+.0003;
-            ret++;
+    private float intersect(int topToBottom, int fromBottom, double lowerLimit){
+        int ret = 0;
+        double start = bacArray[0]+.015;
+        if(getAlternativePlacementHeight(start, lowerLimit, topToBottom, fromBottom) == fromBottom){
+            return ret;
+        }
+        for (int i = 0; i < 5; i++){
+            if(getAlternativePlacementHeight(bacArray[i], lowerLimit, topToBottom, fromBottom)==fromBottom){
+                ret = 100*i;
+                try{
+                double currentBAC = bacArray[i-1];
+
+                while (true){
+                    if(getAlternativePlacementHeight(currentBAC, lowerLimit, topToBottom, fromBottom) >= fromBottom) {
+                        return ret;
+                    }
+                    currentBAC = currentBAC - .00015;
+                    ret++;
+                }
+                }catch (ArrayIndexOutOfBoundsException ex){
+                    return ret;
+                }
+            }
         }
         return ret;
     }
 
-    private int getPlacementWidth(double newLow, int leftToRight, double overLimit, int fromLeft) {
-        int ret = 0;
-        double in = overLimit;
-        Log.v("GraphNums", "newLow starts at " + newLow + " leftToRight " + leftToRight + " overLimit " + overLimit + " fromLeft " + fromLeft );
-
-        while (in < newLow){
-            newLow -=.005;
-            ret++;
-        }
-        Log.v("GraphNums", "ret "+ret);
-        ret = ret*(leftToRight/100);
+    private float getPlacementWidth(double newLow, int tikOffset, int fromLeft) {
+        float ret = (float) newLow;
+        float percent = (float)tikOffset/100;
+        ret = ret*percent;
         ret = ret+fromLeft;
-        Log.v("GraphNums", "ret "+ret);
         return ret;
     }
 
@@ -225,7 +244,7 @@ public class Draw extends View {
         double ret = bacArray[0]+.015;
         if (bacArray[0] == 0.0){
             ret = bacArray[0];
-        }                                         // tries to fit it with a nice scale
+        }                                                                 // tries to fit it with a nice scale
         for (int i = 0; i < 31; i++){
             double currentNum =  ret+(i*0.001);
             String bacString = currentNum + "";
@@ -270,4 +289,6 @@ public class Draw extends View {
         }
         return ret;
     }
+
 }
+

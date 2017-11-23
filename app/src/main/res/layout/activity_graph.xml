@@ -4,52 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="TextView1 in vertical linear layout" />
 
-    <ViewGroup
-        android:id="@+id/viewGroup"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="TextView2 in vertical linear layout" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:padding="10dp"
-            android:text="TextView3 in horizontal linear layout" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/black" />
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:padding="10dp"
-            android:text="TextView4 in horizontal linear layout" />
-    </LinearLayout>
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:padding="10dp"
-        android:paddingLeft="300dp"/>
     <Button
         android:id="@+id/editContactCancelButton"
         android:layout_width="wrap_content"
