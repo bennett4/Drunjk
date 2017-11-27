@@ -10,10 +10,6 @@ import android.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-/**
- * Created by marianga on 11/23/2017.
- */
-
 public class GridLayoutForGraph extends RelativeLayout{
 
         private Context context;

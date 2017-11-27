@@ -15,10 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by marianga on 11/19/2017.
- */
-
 public class Draw extends View {
     private Paint paint;
     private int height, width;

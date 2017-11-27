@@ -13,10 +13,6 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-/**
- * Created by marianga on 11/19/2017.
- */
-
 public class GraphActivity extends Activity implements GridLayoutForGraph.Controller{
     private double[] bacArray;
     private double initialHour;
