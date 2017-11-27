@@ -9,6 +9,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  * Created by marianga on 11/19/2017.
  */
 
-public class GraphActivity extends Activity {
+public class GraphActivity extends Activity implements GridLayoutForGraph.Controller{
     private double[] bacArray;
     private double initialHour;
     private Draw drawView;
@@ -24,7 +25,6 @@ public class GraphActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_graph);
         Intent intent = getIntent();
         bacArray = intent.getDoubleArrayExtra("edu.mountunion.csc330.drunjk.ARRAY_OF_BAC");
         initialHour = intent.getDoubleExtra("edu.mountunion.csc330.drunjk.HOURS_ELAPSED", 1.0);
@@ -39,11 +39,17 @@ public class GraphActivity extends Activity {
         getWindowManager().getDefaultDisplay( ).getSize( size );
         drawView = new Draw(this, size.x, size.y-statusBarHeight, bacArray, initialHour);
         drawView.setBackgroundColor(Color.WHITE);
-        setContentView(drawView);
-
+        GridLayoutForGraph grif = new GridLayoutForGraph(this, drawView, this);
+        setContentView(grif);
+        //setContentView(drawView);
     } // end of method onCreate
 
     public void goBack(View v){
+        finish();
+    }
+
+    @Override
+    public void finishIt() {
         finish();
     }
 }
