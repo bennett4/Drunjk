@@ -49,7 +49,11 @@ public class TipsActivity extends AppCompatActivity {
         } // end switch getting selected menu item
     } // end method onOptionsItemSelected
 
-    public void idADrunkTips (View view, Context context) {
+    public void idADrunk(View view) {
+        // Can't use context as a parameter (XML command doClick doesn't like it).
+        // Can try just updating complete screen with a TextView and just put a
+        // back button to go back to the original screen.
+
 //        AlertDialog.Builder alert = new AlertDialog.Builder(context);
 //        alert.setTitle("Are you sure you want to delete " + contact.getFirstName() + " "
 //                + contact.getLastName() + " from your contacts list?");
@@ -57,6 +61,16 @@ public class TipsActivity extends AppCompatActivity {
 //        alert.setPositiveButton("YES", deleteDialog);
 //        alert.setNegativeButton("NO", deleteDialog);
 //        alert.show();
-    }
+
+        TipsView.idADrunk(view);
+    } // end of idADrunk
+
+    public void helpADrunk(View view) {
+        TipsView.helpADrunk(view);
+    } // end of helpADrunk
+
+    public void idAlcoholPoisoning(View view) {
+        TipsView.idAlcoholPoisoning(view);
+    } // end of idAlcoholPoisoning
 
 } // end of class TipsActivity

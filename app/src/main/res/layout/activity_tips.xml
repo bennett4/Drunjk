@@ -214,8 +214,8 @@
         android:layout_marginBottom="18dp"
         android:layout_toLeftOf="@+id/mediumTips"
         android:layout_toStartOf="@+id/mediumTips"
-        android:text="Identify a drunk"
-        android:onClick="idADrunkTips"/>
+        android:text="Identify a Drunk"
+        android:onClick="idADrunk"/>
 
     <Button
         android:id="@+id/helpADrunk"
@@ -224,7 +224,8 @@
         android:layout_alignLeft="@+id/lowTips"
         android:layout_alignStart="@+id/lowTips"
         android:layout_alignTop="@+id/identify"
-        android:text="Help a drunk" />
+        android:text="Help a Drunk"
+        android:onClick="helpADrunk"/>
 
     <Button
         android:id="@+id/poison"
@@ -233,6 +234,7 @@
         android:layout_alignTop="@+id/helpADrunk"
         android:layout_toEndOf="@+id/veryHighBACLayout"
         android:layout_toRightOf="@+id/veryHighBACLayout"
-        android:text="Identify alcohol poisoning" />
+        android:text="Identify Alcohol Poisoning"
+        android:onClick="idAlcoholPoisoning"/>
 
 </RelativeLayout>
