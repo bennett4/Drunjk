@@ -20,6 +20,10 @@ public class Draw extends View {
     private int height, width;
     private double[] bacArray;
     private double initialHour;
+    private static final int BLACK = Color.BLACK;
+    private static final int WHITE = Color.WHITE;
+    private int backgroundCol = BLACK;
+    private int graphCol = WHITE;
 
     private void init() {
         paint.setColor(Color.BLACK);
@@ -66,7 +70,7 @@ public class Draw extends View {
         }
         double upperLimit;
         double lowerLimit;
-
+        setBackgroundColor(graphCol);
         String[] bacString = new String[5];
         for(int i = 0; i < 5; i++){
             bacString[i] = bacArray[i] + "";
@@ -114,7 +118,7 @@ public class Draw extends View {
             paint.setColor(Color.GRAY);
             int legalLimitHeight = getPlacementHeight(.08, lowerLimit, topToBottom, fromBottom);
             canvas.drawLine(fromLeft, legalLimitHeight, fromRight, legalLimitHeight, paint);
-            paint.setColor(Color.BLACK);
+            paint.setColor(backgroundCol);
             canvas.drawText(".08", fromRight, legalLimitHeight+heightOffset, paint);
         }
         else if (.08 <= lowerLimit){
@@ -122,7 +126,7 @@ public class Draw extends View {
             paint.setColor(Color.GRAY);
             int legalLimitHeight = getPlacementHeight(.08, lowerLimit, topToBottom, fromBottom);
             canvas.drawLine(fromLeft, legalLimitHeight, fromRight, legalLimitHeight, paint);
-            paint.setColor(Color.BLACK);
+            paint.setColor(backgroundCol);
             canvas.drawText(".08", fromRight+10, legalLimitHeight+heightOffset, paint);
             paint.setStrokeWidth(10.0f);
         }
@@ -158,7 +162,7 @@ public class Draw extends View {
             dotHeight = getPlacementHeight(bacArray[i], lowerLimit, topToBottom, fromBottom);
             paint.setColor(Color.RED);
             canvas.drawLine(tikO[i], dotHeight-weightOffset, tikO[i], dotHeight+weightOffset, paint);
-            paint.setColor(Color.BLACK);
+            paint.setColor(backgroundCol);
         }
 
 
@@ -286,5 +290,15 @@ public class Draw extends View {
         return ret;
     }
 
+    public void colorChange(){
+        if (backgroundCol == BLACK){
+            backgroundCol = WHITE;
+            graphCol = BLACK;
+        }
+        else{
+            backgroundCol = BLACK;
+            graphCol = WHITE;
+        }
+    }
 }
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class GridLayoutForGraph extends RelativeLayout{
 
         private Context context;
+        private Draw grap;
 
         interface Controller{
             void finishIt();
@@ -30,7 +31,9 @@ public class GridLayoutForGraph extends RelativeLayout{
             wm.getDefaultDisplay( ).getSize( size );
             int w = size.x;
             int h = size.y;
-            addView(graph);
+            grap = graph;
+            grap.setOnLongClickListener(new viewHandler());
+            addView(grap);
 
             Button b = new Button( context );
             b.setTextSize(15);
@@ -55,6 +58,15 @@ public class GridLayoutForGraph extends RelativeLayout{
 
         @Override
         public void onClick(View v) {controller.finishIt();}
+    }
+    private class viewHandler implements OnLongClickListener{
+
+        @Override
+        public boolean onLongClick(View v) {
+            grap.colorChange();
+            grap.invalidate();
+            return false;
+        }
     }
     }
 
