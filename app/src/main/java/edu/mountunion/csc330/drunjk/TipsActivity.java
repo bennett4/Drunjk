@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 public class TipsActivity extends AppCompatActivity {
 
@@ -61,6 +65,36 @@ public class TipsActivity extends AppCompatActivity {
 //        alert.setPositiveButton("YES", deleteDialog);
 //        alert.setNegativeButton("NO", deleteDialog);
 //        alert.show();
+
+        RelativeLayout layout = new RelativeLayout( this );
+        ScrollView scrollView = new ScrollView( this );
+
+        TextView tipsView = new TextView(this);
+        tipsView.setText("Here are some tips.");
+        // create a back button
+        Button backButton = new Button( this );
+        backButton.setText( "Back" );
+
+        backButton.setOnClickListener( new View.OnClickListener( ) {
+            public void onClick(View v) {
+                setContentView(R.layout.activity_tips);
+            }
+        });
+
+        scrollView.addView(tipsView);
+        layout.addView( scrollView );
+
+        // add back button at bottom
+        RelativeLayout.LayoutParams params
+                = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT );
+        params.addRule( RelativeLayout.ALIGN_PARENT_BOTTOM );
+        params.addRule( RelativeLayout.CENTER_HORIZONTAL );
+        params.setMargins( 0, 0, 0, 50 );
+        layout.addView( backButton, params );
+
+        setContentView( layout );
 
 
     } // end of idADrunk
