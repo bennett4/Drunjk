@@ -92,7 +92,7 @@ public class ContactActivity extends AppCompatActivity {
 
                 } // end if permission was granted
                 else {
-
+                    showSettingsDialog(getContext());
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                 } // end else permission was denied
@@ -101,6 +101,20 @@ public class ContactActivity extends AppCompatActivity {
         } // end switch to see if permission was granted or not
     } // end of method onRequestPermissionResult
 
+    public void showSettingsDialog(Context context) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setTitle("Please go to your settings and edit phone permissions to enable calling.");
+        SettingsDialog settings = new SettingsDialog();
+        alert.setPositiveButton("OK", settings);
+        alert.show();
+    } // end of method showCallConfirmationDialog
+
+    private class SettingsDialog implements DialogInterface.OnClickListener {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int id) {
+        }
+    }
+
     public void showCallConfirmationDialog(Context context, int id) {
         Contact contact = database.selectById(id);
         contactPhoneNumber = contact.getPhoneNum();
@@ -108,13 +122,13 @@ public class ContactActivity extends AppCompatActivity {
         alert.setTitle("Call " + "(" + contact.getPhoneNum().substring(0, 3) + ") "
                        + contact.getPhoneNum().substring(3, 6) + "-"
                        + contact.getPhoneNum().substring(6) + "?");
-        PlayDialog call = new PlayDialog();
+        CallDialog call = new CallDialog();
         alert.setPositiveButton("YES", call);
         alert.setNegativeButton("NO", call);
         alert.show();
     } // end of method showCallConfirmationDialog
 
-    private class PlayDialog implements DialogInterface.OnClickListener {
+    private class CallDialog implements DialogInterface.OnClickListener {
         @Override
         public void onClick(DialogInterface dialogInterface, int id) {
             phoneAFriend(id);
@@ -130,7 +144,7 @@ public class ContactActivity extends AppCompatActivity {
 
             if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
-
+                    showSettingsDialog(getContext());
                 } // end if need to show permission request
                 else {
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},
