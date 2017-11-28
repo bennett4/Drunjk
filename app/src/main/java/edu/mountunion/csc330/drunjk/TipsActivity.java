@@ -62,15 +62,15 @@ public class TipsActivity extends AppCompatActivity {
 //        alert.setNegativeButton("NO", deleteDialog);
 //        alert.show();
 
-        TipsView.idADrunk(view);
+
     } // end of idADrunk
 
     public void helpADrunk(View view) {
-        TipsView.helpADrunk(view);
+
     } // end of helpADrunk
 
     public void idAlcoholPoisoning(View view) {
-        TipsView.idAlcoholPoisoning(view);
+
     } // end of idAlcoholPoisoning
 
 } // end of class TipsActivity
