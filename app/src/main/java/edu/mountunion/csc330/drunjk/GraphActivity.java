@@ -37,7 +37,6 @@ public class GraphActivity extends Activity implements GridLayoutForGraph.Contro
         drawView.setBackgroundColor(Color.WHITE);
         GridLayoutForGraph grif = new GridLayoutForGraph(this, drawView, this);
         setContentView(grif);
-        //setContentView(drawView);
     } // end of method onCreate
 
     public void goBack(View v){

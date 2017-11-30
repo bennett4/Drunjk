@@ -20,31 +20,34 @@
         android:gravity="center_horizontal"
         android:layout_below="@id/title"
         android:layout_margin="10dp"
-        android:text="Icon made by https://www.flaticon.com/authors/freepik from www.flaticon.com "/>
+        android:text="Launcher icon made by https://www.flaticon.com/authors/freepik from www.flaticon.com "/>
 
     <TextView
+        android:id="@+id/settingsicon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_below="@id/launcher"
         android:layout_margin="10dp"
-        android:text="Icon made by https://www.flaticon.com/authors/smashicons from www.flaticon.com "/>
+        android:text="Calculator icon made by https://www.flaticon.com/authors/smashicons from www.flaticon.com "/>
 
     <TextView
+        android:id="@+id/peopleicon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_below="@id/launcher"
+        android:layout_below="@id/settingsicon"
         android:layout_margin="10dp"
-        android:text="Icon made by https://www.flaticon.com/authors/egor-rumyantsev from www.flaticon.com "/>
+        android:text="People icon made by https://www.flaticon.com/authors/egor-rumyantsev from www.flaticon.com "/>
 
     <TextView
+        android:id="@+id/calc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_below="@id/launcher"
+        android:layout_below="@id/peopleicon"
         android:layout_margin="10dp"
-        android:text="Icon made by https://www.flaticon.com/authors/daniel-bruce from www.flaticon.com "/>
+        android:text="Settings icon made by https://www.flaticon.com/authors/daniel-bruce from www.flaticon.com "/>
 
 
 

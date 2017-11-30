@@ -275,7 +275,6 @@ public class ContactActivity extends AppCompatActivity {
             shapedrawable.getPaint().setAlpha(60);
             shapedrawable.getPaint().setStrokeWidth(20);
             shapedrawable.getPaint().setStyle(Paint.Style.STROKE);
-
             // Needs fixed ^^^
 
             //newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
@@ -283,6 +282,7 @@ public class ContactActivity extends AppCompatActivity {
             newContactButton.setTransformationMethod(null);
             AddButtonHandler newButtonHandler = new AddButtonHandler(newContactButton);
             newContactButton.setOnClickListener(newButtonHandler);
+
 
             grid.addView(newContactView, width / 8,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
