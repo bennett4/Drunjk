@@ -163,7 +163,7 @@ public class Draw extends View {
             canvas.drawLine(tikO[i], tikUp, tikO[i], tikDown, paint);
             canvas.drawText((hour+i)+"", tikO[i]-10, tikDown+45, paint);
             dotHeight = getPlacementHeight(bacArray[i], lowerLimit, topToBottom, fromBottom);
-            paint.setColor(Color.RED);
+            paint.setColor(ContextCompat.getColor(cont, R.color.colorAccent));
             canvas.drawLine(tikO[i], dotHeight-weightOffset, tikO[i], dotHeight+weightOffset, paint);
             paint.setColor(ContextCompat.getColor(cont, backgroundCol));
         }
