@@ -260,21 +260,25 @@ public class ContactActivity extends AppCompatActivity {
             newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
 
             // Needs fixed vvv
+
+            ShapeDrawable shapedrawable1 = new ShapeDrawable();
+            shapedrawable1.setShape(new RectShape());
+            shapedrawable1.getPaint().setColor(Color.GREEN);
+            shapedrawable1.getPaint().setStyle(Paint.Style.FILL);
+            shapedrawable1.getPaint().setColor(Color.GREEN);
+            newContactButton.setBackground(shapedrawable1);
+
+
             ShapeDrawable shapedrawable = new ShapeDrawable();
             shapedrawable.setShape(new RectShape());
-
-            shapedrawable.getPaint().setColor(getResources().getColor(R.color.buttonColor));
-            shapedrawable.getPaint().setStrokeWidth(70f);
+            shapedrawable.getPaint().setColor(Color.RED);
+            shapedrawable.getPaint().setAlpha(60);
+            shapedrawable.getPaint().setStrokeWidth(20);
             shapedrawable.getPaint().setStyle(Paint.Style.STROKE);
 
-            shapedrawable.getPaint().setColor(getResources().getColor(R.color.backgroundColor));
-            shapedrawable.getPaint().setStrokeWidth(10f);
-            shapedrawable.getPaint().setStyle(Paint.Style.STROKE);
-
-            newContactButton.setBackground(shapedrawable);
             // Needs fixed ^^^
 
-            newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+            //newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
 
             newContactButton.setTransformationMethod(null);
             AddButtonHandler newButtonHandler = new AddButtonHandler(newContactButton);

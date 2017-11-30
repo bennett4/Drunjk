@@ -45,7 +45,7 @@ public class TipsActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_settings:
-                Intent settingsIntent = new Intent(this, ContactActivity.class);
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
                 this.startActivity(settingsIntent);
                 finish();
                 return true;
