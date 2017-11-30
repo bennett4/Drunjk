@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#2c1c16</color>
     <color name="colorPrimaryDark">#221511</color>
-    <color name="colorAccent">#96d793</color>
+    <color name="colorAccent">#559452</color>
     <color name="darkPrim">#8000</color>
     <color name="darkBlue">#002233</color>
     <color name="white">#fff0e6</color>
@@ -13,5 +13,5 @@
     <color name="yellow">#DDDD00</color>
     <color name="orange">#FF7700</color>
     <color name="black">#000000</color>
-    <color name="background_material_light">#50f1d69e</color>
+    <color name="background_material_light">#ffecc4</color>
 </resources>
