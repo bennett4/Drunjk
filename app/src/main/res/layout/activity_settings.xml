@@ -3,4 +3,50 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:text="Special Thanks! "/>
+
+
+    <TextView
+        android:id="@+id/launcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/title"
+        android:layout_margin="10dp"
+        android:text="Icon made by https://www.flaticon.com/authors/freepik from www.flaticon.com "/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/launcher"
+        android:layout_margin="10dp"
+        android:text="Icon made by https://www.flaticon.com/authors/smashicons from www.flaticon.com "/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/launcher"
+        android:layout_margin="10dp"
+        android:text="Icon made by https://www.flaticon.com/authors/egor-rumyantsev from www.flaticon.com "/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/launcher"
+        android:layout_margin="10dp"
+        android:text="Icon made by https://www.flaticon.com/authors/daniel-bruce from www.flaticon.com "/>
+
+
+
+
 </RelativeLayout>
