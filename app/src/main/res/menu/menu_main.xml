@@ -5,22 +5,21 @@ tools:context="edu.mountunion.csc330.drunjk.MainActivity">
 <item
     android:id="@+id/action_calculator"
     android:title="@string/calculate_bac"
-    android:icon="@drawable/calc1"
+    android:icon="@drawable/calcsmall"
     app:showAsAction="always" />
 <item
     android:id="@+id/action_contacts"
-    android:icon="@drawable/multusersil1"
+    android:icon="@drawable/phonebook2"
     android:title="@string/contacts"
+    app:showAsAction="always" />
+<item
+    android:id="@+id/action_tips"
+    android:title="@string/tips"
+    android:icon="@drawable/lightbulbsmall"
     app:showAsAction="always" />
 <item
     android:id="@+id/action_settings"
     android:title="@string/settings"
-    android:icon="@drawable/settings1"
+    android:icon="@drawable/infosmall"
     app:showAsAction="always" />
-    <item
-        android:id="@+id/action_tips"
-        android:title="@string/tips"
-        android:icon="@drawable/info1"
-        app:showAsAction="always" />
-
 </menu>

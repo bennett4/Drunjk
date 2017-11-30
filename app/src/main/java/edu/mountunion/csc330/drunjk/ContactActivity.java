@@ -275,7 +275,7 @@ public class ContactActivity extends AppCompatActivity {
             Button newContactButton = new Button(this);
             newContactButton.setText("New Contact");
             newContactButton.setTextSize(29);
-            newContactButton.setTextColor(Color.rgb(100, 100, 100));
+            newContactButton.setTextColor(Color.rgb(80, 80, 80));
             newContactButton.setBackground(background);
             newContactButton.setTransformationMethod(null);
             AddButtonHandler newButtonHandler = new AddButtonHandler(newContactButton);

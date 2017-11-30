@@ -4,13 +4,36 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/disclaimerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_margin="15dp"
         android:textSize="20sp"
-        android:text="Special Thanks! "/>
+        android:textColor="@color/black"
+        android:text="Disclaimer"/>
+
+    <TextView
+        android:id="@+id/disclaimerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/disclaimerTitle"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:text="We are not responsible, etc. add stuff here"/>
+
+    <TextView
+        android:id="@+id/specialThanks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/disclaimerText"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="Special Thanks"/>
 
 
     <TextView
@@ -18,38 +41,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_below="@id/title"
+        android:layout_below="@id/specialThanks"
         android:layout_margin="10dp"
-        android:text="Launcher icon made by https://www.flaticon.com/authors/freepik from www.flaticon.com "/>
+        android:textColor="@color/black"
+        android:text="Launcher and calculator icons made by https://www.flaticon.com/authors/freepik from www.flaticon.com"/>
 
     <TextView
-        android:id="@+id/settingsicon"
+        android:id="@+id/phonebookicon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_below="@id/launcher"
         android:layout_margin="10dp"
-        android:text="Calculator icon made by https://www.flaticon.com/authors/smashicons from www.flaticon.com "/>
-
-    <TextView
-        android:id="@+id/peopleicon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_below="@id/settingsicon"
-        android:layout_margin="10dp"
-        android:text="People icon made by https://www.flaticon.com/authors/egor-rumyantsev from www.flaticon.com "/>
+        android:textColor="@color/black"
+        android:text="Phone book icon made by https://www.flaticon.com/authors/chanut-is-industries from www.flaticon.com"/>
 
     <TextView
         android:id="@+id/calc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_below="@id/peopleicon"
+        android:layout_below="@id/phonebookicon"
         android:layout_margin="10dp"
-        android:text="Settings icon made by https://www.flaticon.com/authors/daniel-bruce from www.flaticon.com "/>
+        android:textColor="@color/black"
+        android:text="Tips icon made by https://www.flaticon.com/authors/simpleicon from www.flaticon.com"/>
 
-
-
+    <TextView
+        android:id="@+id/infoicon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/calc"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:text="Information icon made by https://www.flaticon.com/authors/daniel-bruce from www.flaticon.com"/>
 
 </RelativeLayout>
