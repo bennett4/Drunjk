@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.net.Uri;
@@ -199,6 +200,24 @@ public class ContactActivity extends AppCompatActivity {
             TextView emptyTextView = new TextView(this);
             TextView emptyTextView2 = new TextView(this);
 
+            // Creates button backgrounds
+            ShapeDrawable[] sd = new ShapeDrawable[2];
+
+            ShapeDrawable fill = new ShapeDrawable();
+            fill.setShape(new RectShape());
+            fill.getPaint().setColor(getResources().getColor(R.color.buttonColor));
+            fill.getPaint().setStyle(Paint.Style.FILL);
+            sd[0] = fill;
+
+            ShapeDrawable border = new ShapeDrawable();
+            border.setShape(new RectShape());
+            border.getPaint().setColor(getResources().getColor(R.color.backgroundColor));
+            border.getPaint().setStrokeWidth(20);
+            border.getPaint().setStyle(Paint.Style.STROKE);
+            sd[1] = border;
+
+            LayerDrawable background = new LayerDrawable(sd);
+
             grid.addView( emptyTextView, width / 8,
                     ViewGroup.LayoutParams.WRAP_CONTENT );
             grid.addView( contactsTextView, ( int ) ( width * .65 ),
@@ -219,17 +238,17 @@ public class ContactActivity extends AppCompatActivity {
                 contactButtons[i].setText( contact.getFirstName() + " " + contact.getLastName() );
                 contactButtons[i].setId( contact.getId( ) );
                 contactButtons[i].setTextSize(30);
-                contactButtons[i].setBackgroundColor(getResources().getColor(R.color.buttonColor));
+                contactButtons[i].setBackground(background);
                 contactButtons[i].setTransformationMethod(null);
 
                 editButtons[i] = new Button( this );
                 editButtons[i].setText( "EDIT" );
                 editButtons[i].setId( contact.getId( ) );
                 editButtons[i].setTextSize(20);
-                editButtons[i].setBackgroundColor(getResources().getColor(R.color.buttonColor));
+                editButtons[i].setGravity(Gravity.CENTER);
+                editButtons[i].setBackground(background);
                 editButtons[i].setTransformationMethod(null);
                 editButtons[i].setPadding(40, 50, 40, 30);
-                editButtons[i].setGravity( Gravity.CENTER );
 
                 // set up event handling
                 bh = new ButtonHandler( contactButtons[i] );
@@ -255,31 +274,9 @@ public class ContactActivity extends AppCompatActivity {
 
             Button newContactButton = new Button(this);
             newContactButton.setText("New Contact");
-            newContactButton.setTextSize(27);
+            newContactButton.setTextSize(29);
             newContactButton.setTextColor(Color.rgb(100, 100, 100));
-            newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
-
-            // Needs fixed vvv
-
-            ShapeDrawable shapedrawable1 = new ShapeDrawable();
-            shapedrawable1.setShape(new RectShape());
-            shapedrawable1.getPaint().setColor(Color.GREEN);
-            shapedrawable1.getPaint().setStyle(Paint.Style.FILL);
-            shapedrawable1.getPaint().setColor(Color.GREEN);
-            newContactButton.setBackground(shapedrawable1);
-
-
-            ShapeDrawable shapedrawable = new ShapeDrawable();
-            shapedrawable.setShape(new RectShape());
-            shapedrawable.getPaint().setColor(Color.RED);
-            shapedrawable.getPaint().setAlpha(60);
-            shapedrawable.getPaint().setStrokeWidth(20);
-            shapedrawable.getPaint().setStyle(Paint.Style.STROKE);
-
-            // Needs fixed ^^^
-
-            //newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
-
+            newContactButton.setBackground(background);
             newContactButton.setTransformationMethod(null);
             AddButtonHandler newButtonHandler = new AddButtonHandler(newContactButton);
             newContactButton.setOnClickListener(newButtonHandler);
