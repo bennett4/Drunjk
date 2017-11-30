@@ -61,11 +61,11 @@ public class TipsActivity extends AppCompatActivity {
         ScrollView scrollView = new ScrollView( this );
 
         //Set Title View
-        String header = "Here are some tips!";
+        String header = "How to Recognize a Drunk";
         TextView titleView = new TextView(this);
         titleView.setText(header);
-        titleView.setTextColor(Color.BLACK);
-        titleView.setTextSize(40);
+        //titleView.setTextColor(Color.BLACK);
+        titleView.setTextSize(34);
 
         RelativeLayout.LayoutParams paramT
                 = new RelativeLayout.LayoutParams(
@@ -78,7 +78,6 @@ public class TipsActivity extends AppCompatActivity {
         //Set Content View
         TextView tipsView = new TextView(this);
         tipsView.setText( "\n\n\n\n" +
-                "\tHow to recognize if someone is drunk\n" +
                 "\t\t • Slurred speech\n" +
                 "\t\t • Trouble with balance\n" +
                 "\t\t • Stumbling\n" +
@@ -86,6 +85,16 @@ public class TipsActivity extends AppCompatActivity {
                 "\t\t • Unusual behavior\n" +
                 "\t\t • Aggressive, loud, or inappropriate\n" +
                 "\t\t • Trouble remembering things\n");
+        // Original
+//        tipsView.setText( "\n\n\n\n" +
+//                "\tHow to recognize if someone is drunk\n" +
+//                "\t\t • Slurred speech\n" +
+//                "\t\t • Trouble with balance\n" +
+//                "\t\t • Stumbling\n" +
+//                "\t\t • Bloodshot, glassy or watery eyes\n" +
+//                "\t\t • Unusual behavior\n" +
+//                "\t\t • Aggressive, loud, or inappropriate\n" +
+//                "\t\t • Trouble remembering things\n");
         tipsView.setTextColor(Color.BLACK);
         tipsView.setTextSize(23);
 
@@ -126,11 +135,11 @@ public class TipsActivity extends AppCompatActivity {
         ScrollView scrollView = new ScrollView( this );
 
         //Set Title View
-        String header = "Here are some tips!";
+        String header = "How to Help";
         TextView titleView = new TextView(this);
         titleView.setText(header);
-        titleView.setTextColor(Color.BLACK);
-        titleView.setTextSize(40);
+        //titleView.setTextColor(Color.BLACK);
+        titleView.setTextSize(34);
 
         RelativeLayout.LayoutParams paramT
                 = new RelativeLayout.LayoutParams(
@@ -141,7 +150,7 @@ public class TipsActivity extends AppCompatActivity {
         paramT.setMargins( 0, 25, 0, 50 );
 
         TextView tipsView = new TextView(this);
-        tipsView.setText("\n\n\n\n\n" + "Steps to help an intoxicated person\n" +
+        tipsView.setText("\n\n\n\n\n" +
                 " 1. Cut off the person from drinking any further\n" +
                 " 2. Try to get them into a calmer and controlled environment\n" +
                 "\t\ta. Someone’s room or a bathroom\n" +
@@ -154,6 +163,20 @@ public class TipsActivity extends AppCompatActivity {
                 "\t\ta. If vomiting does not stop look to taking the person to the\n\t\t\t\tnearest ER\n" +
                 "\t\tb. Don't leave them while they sleep, vomiting could reoccur\n" +
                 " 7. Time is the best medicine so if the person is well enough to\n\t\t rest get them plenty of water and let time heal them\n");
+        // Original
+//        tipsView.setText("\n\n\n\n\n" + "Steps to help an intoxicated person\n" +
+//                " 1. Cut off the person from drinking any further\n" +
+//                " 2. Try to get them into a calmer and controlled environment\n" +
+//                "\t\ta. Someone’s room or a bathroom\n" +
+//                " 3. Try and get the person to drink some water\n" +
+//                " 4. If they are way too intoxicated to the point where vomiting\n\t\t  is or may occur get them to a toilet or trash can\n" +
+//                " 5. If the person is unresponsive and you can’t get\n\t\t them to stand…\n" +
+//                "\t\ta. Lay them down and on their side with their bottom arm to\n\t\t\t\trest their head on\n" +
+//                "\t\tb. Getting them on their side will allow for them to have the\n\t\t\t\tvomit leave the body rather than chocking on it\n" +
+//                " 6. If they are not vomiting or done vomiting get them into a\n\t\t comfortable position to sleep\n" +
+//                "\t\ta. If vomiting does not stop look to taking the person to the\n\t\t\t\tnearest ER\n" +
+//                "\t\tb. Don't leave them while they sleep, vomiting could reoccur\n" +
+//                " 7. Time is the best medicine so if the person is well enough to\n\t\t rest get them plenty of water and let time heal them\n");
         tipsView.setTextColor(Color.BLACK);
         tipsView.setTextSize(15);
 
@@ -190,11 +213,11 @@ public class TipsActivity extends AppCompatActivity {
         ScrollView scrollView = new ScrollView( this );
 
         //Set Title View
-        String header = "Here are some tips!";
+        String header = "Signs of Alcohol Poisoning";
         TextView titleView = new TextView(this);
         titleView.setText(header);
-        titleView.setTextColor(Color.BLACK);
-        titleView.setTextSize(40);
+        //titleView.setTextColor(Color.BLACK);
+        titleView.setTextSize(34);
 
         RelativeLayout.LayoutParams paramT
                 = new RelativeLayout.LayoutParams(
@@ -206,7 +229,6 @@ public class TipsActivity extends AppCompatActivity {
 
         TextView tipsView = new TextView(this);
         tipsView.setText("\n\n\n\n" +
-        "\tSigns of alcohol poisoning\n" +
                 "\t\t • Breathing drastically slows\n" +
                 "\t\t • Unresponsive audibly or physically\n" +
                 "\t\t • Unconscious\n" +
@@ -214,6 +236,16 @@ public class TipsActivity extends AppCompatActivity {
                 "\t\t • Dehydration (vomiting)\n" +
                 "\t\t • Rapid pulse\n" +
                 "\t\t • Cold clammy hands/feet\n");
+        // Original
+//        tipsView.setText("\n\n\n\n" +
+//                "\tSigns of alcohol poisoning\n" +
+//                "\t\t • Breathing drastically slows\n" +
+//                "\t\t • Unresponsive audibly or physically\n" +
+//                "\t\t • Unconscious\n" +
+//                "\t\t • Blue lips or fingertips\n" +
+//                "\t\t • Dehydration (vomiting)\n" +
+//                "\t\t • Rapid pulse\n" +
+//                "\t\t • Cold clammy hands/feet\n");
         tipsView.setTextColor(Color.BLACK);
         tipsView.setTextSize(23);
 
