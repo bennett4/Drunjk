@@ -142,18 +142,18 @@ public class TipsActivity extends AppCompatActivity {
 
         TextView tipsView = new TextView(this);
         tipsView.setText("\n\n\n\n\n" + "Steps to help an intoxicated person\n" +
-                " 1.Cut off the person from drinking any further\n" +
-                " 2.Try to get them into a calmer and controlled environment\n" +
-                "\t\ta.Someone’s room or a bathroom\n" +
-                " 3.Try and get the person to drink some water\n" +
-                " 4.If they are way too intoxicated to the point where vomiting\n\t\tis or may occur get them to a toilet or trash can\n" +
-                " 5.If the person is unresponsive and you can’t get\n\t\tthem to stand…\n" +
-                "\t\ta.Lay them down and on their side with their bottom arm to\n\t\t\t\trest their head on\n" +
-                "\t\tb.Getting them on their side will allow for them to have the\n\t\t\t\tvomit leave the body rather than chocking on it\n" +
-                " 6.If they are not vomiting or done vomiting get them into a\n\t\tcomfortable position to sleep\n" +
-                "\t\ta.If vomiting does not stop look to taking the person to the\n\t\t\t\tnearest ER\n" +
-                "\t\tb.Don't leave them while they sleep, vomiting could reoccur\n" +
-                " 7.Time is the best medicine so if the person is well enough to\n\t\trest get them plenty of water and let time heal them\n");
+                " 1. Cut off the person from drinking any further\n" +
+                " 2. Try to get them into a calmer and controlled environment\n" +
+                "\t\ta. Someone’s room or a bathroom\n" +
+                " 3. Try and get the person to drink some water\n" +
+                " 4. If they are way too intoxicated to the point where vomiting\n\t\t  is or may occur get them to a toilet or trash can\n" +
+                " 5. If the person is unresponsive and you can’t get\n\t\t them to stand…\n" +
+                "\t\ta. Lay them down and on their side with their bottom arm to\n\t\t\t\trest their head on\n" +
+                "\t\tb. Getting them on their side will allow for them to have the\n\t\t\t\tvomit leave the body rather than chocking on it\n" +
+                " 6. If they are not vomiting or done vomiting get them into a\n\t\t comfortable position to sleep\n" +
+                "\t\ta. If vomiting does not stop look to taking the person to the\n\t\t\t\tnearest ER\n" +
+                "\t\tb. Don't leave them while they sleep, vomiting could reoccur\n" +
+                " 7. Time is the best medicine so if the person is well enough to\n\t\t rest get them plenty of water and let time heal them\n");
         tipsView.setTextColor(Color.BLACK);
         tipsView.setTextSize(15);
 
@@ -205,7 +205,7 @@ public class TipsActivity extends AppCompatActivity {
         paramT.setMargins( 0, 25, 0, 50 );
 
         TextView tipsView = new TextView(this);
-        tipsView.setText("\n\n\n\n\n" +
+        tipsView.setText("\n\n\n\n" +
         "\tSigns of alcohol poisoning\n" +
                 "\t\t • Breathing drastically slows\n" +
                 "\t\t • Unresponsive audibly or physically\n" +
