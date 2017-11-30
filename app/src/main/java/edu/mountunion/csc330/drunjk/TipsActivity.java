@@ -60,22 +60,36 @@ public class TipsActivity extends AppCompatActivity {
         RelativeLayout layout = new RelativeLayout( this );
         ScrollView scrollView = new ScrollView( this );
 
+        //Set Title View
         String header = "Here are some tips!";
+        TextView titleView = new TextView(this);
+        titleView.setText(header);
+        titleView.setTextColor(Color.BLACK);
+        titleView.setTextSize(40);
 
+        RelativeLayout.LayoutParams paramT
+                = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT );
+        paramT.addRule( RelativeLayout.ALIGN_PARENT_TOP );
+        paramT.addRule( RelativeLayout.CENTER_HORIZONTAL );
+        paramT.setMargins( 0, 25, 0, 50 );
 
+        //Set Content View
         TextView tipsView = new TextView(this);
-        tipsView.setText( header + "\n\n" +
-                "How to recognize if someone is drunk\n" +
-                " • Slurred speech\n" +
-                " • trouble with balance\n" +
-                " • stumbling\n" +
-                " • bloodshot, glassy or watery eyes\n" +
-                " • unusual behavior\n" +
-                " • aggressive, loud, or inappropriate\n" +
-                " • trouble remembering things\n");
+        tipsView.setText( "\n\n\n\n" +
+                "\tHow to recognize if someone is drunk\n" +
+                "\t\t • Slurred speech\n" +
+                "\t\t • Trouble with balance\n" +
+                "\t\t • Stumbling\n" +
+                "\t\t • Bloodshot, glassy or watery eyes\n" +
+                "\t\t • Unusual behavior\n" +
+                "\t\t • Aggressive, loud, or inappropriate\n" +
+                "\t\t • Trouble remembering things\n");
         tipsView.setTextColor(Color.BLACK);
-        tipsView.setTextSize(20);
-//        tipsView.setGravity(Gravity.CENTER_HORIZONTAL);
+        tipsView.setTextSize(23);
+
+
         // create a back button
         Button backButton = new Button( this );
         backButton.setText( "Back" );
@@ -86,7 +100,9 @@ public class TipsActivity extends AppCompatActivity {
             }
         });
 
+        //Add the textView to layout
         scrollView.addView(tipsView);
+        layout.addView( titleView, paramT );
         layout.addView( scrollView );
 
         // add back button at bottom
@@ -108,22 +124,38 @@ public class TipsActivity extends AppCompatActivity {
         RelativeLayout layout = new RelativeLayout( this );
         ScrollView scrollView = new ScrollView( this );
 
+        //Set Title View
+        String header = "Here are some tips!";
+        TextView titleView = new TextView(this);
+        titleView.setText(header);
+        titleView.setTextColor(Color.BLACK);
+        titleView.setTextSize(40);
+
+        RelativeLayout.LayoutParams paramT
+                = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT );
+        paramT.addRule( RelativeLayout.ALIGN_PARENT_TOP );
+        paramT.addRule( RelativeLayout.CENTER_HORIZONTAL );
+        paramT.setMargins( 0, 25, 0, 50 );
+
         TextView tipsView = new TextView(this);
-        tipsView.setText("Here are some tips!\n\n" +
-        "Steps to help an intoxicated person\n" +
+        tipsView.setText("\n\n\n\n\n" + "Steps to help an intoxicated person\n" +
                 " 1.Cut off the person from drinking any further\n" +
                 " 2.Try to get them into a calmer and controlled environment\n" +
-                " a.Someone’s room or a bathroom\n" +
+                "\t\ta.Someone’s room or a bathroom\n" +
                 " 3.Try and get the person to drink some water\n" +
-                " 4.If they are way too intoxicated to the point where vomiting is or may occur get them to a toilet or trash can\n" +
-                " 5.If the person is unresponsive and you can’t get them to stand…\n" +
-                " a.Lay them down and on their side with their bottom arm to rest their head on\n" +
-                " b.Getting them on their side will allow for them to have the vomit leave the body rather than chocking on it\n" +
-                " 6.If they are not vomiting or done vomiting get them into a comfortable position to sleep\n" +
-                " a.If vomiting does not stop look to taking the person to the nearest ER\n" +
-                " b.Do not leave them alone while they sleep, vomiting could reoccur\n" +
-                " 7.Time is the best medicine so if the person is well enough to rest get them plenty of water and let time heal them\n");
+                " 4.If they are way too intoxicated to the point where vomiting\n\t\tis or may occur get them to a toilet or trash can\n" +
+                " 5.If the person is unresponsive and you can’t get\n\t\tthem to stand…\n" +
+                "\t\ta.Lay them down and on their side with their bottom arm to\n\t\t\t\trest their head on\n" +
+                "\t\tb.Getting them on their side will allow for them to have the\n\t\t\t\tvomit leave the body rather than chocking on it\n" +
+                " 6.If they are not vomiting or done vomiting get them into a\n\t\tcomfortable position to sleep\n" +
+                "\t\ta.If vomiting does not stop look to taking the person to the\n\t\t\t\tnearest ER\n" +
+                "\t\tb.Don't leave them while they sleep, vomiting could reoccur\n" +
+                " 7.Time is the best medicine so if the person is well enough to\n\t\trest get them plenty of water and let time heal them\n");
         tipsView.setTextColor(Color.BLACK);
+        tipsView.setTextSize(15);
+
         // create a back button
         Button backButton = new Button( this );
         backButton.setText( "Back" );
@@ -135,6 +167,7 @@ public class TipsActivity extends AppCompatActivity {
         });
 
         scrollView.addView(tipsView);
+        layout.addView(titleView, paramT);
         layout.addView( scrollView );
 
         // add back button at bottom
@@ -154,18 +187,34 @@ public class TipsActivity extends AppCompatActivity {
         RelativeLayout layout = new RelativeLayout( this );
         ScrollView scrollView = new ScrollView( this );
 
+        //Set Title View
+        String header = "Here are some tips!";
+        TextView titleView = new TextView(this);
+        titleView.setText(header);
+        titleView.setTextColor(Color.BLACK);
+        titleView.setTextSize(40);
+
+        RelativeLayout.LayoutParams paramT
+                = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT );
+        paramT.addRule( RelativeLayout.ALIGN_PARENT_TOP );
+        paramT.addRule( RelativeLayout.CENTER_HORIZONTAL );
+        paramT.setMargins( 0, 25, 0, 50 );
+
         TextView tipsView = new TextView(this);
-        tipsView.setText("Here are some tips!\n\n" +
-        "Signs of alcohol poisoning\n" +
-                " • Breathing drastically slows\n" +
-                " • Unresponsive audibly or physically\n" +
-                " • Unconscious\n" +
-                " • Blue lips or fingertips\n" +
-                " • Dehydration (vomiting)\n" +
-                " • Rapid pulse\n" +
-                " • Cold clammy hands/feet\n");
+        tipsView.setText("\n\n\n\n\n" +
+        "\tSigns of alcohol poisoning\n" +
+                "\t\t • Breathing drastically slows\n" +
+                "\t\t • Unresponsive audibly or physically\n" +
+                "\t\t • Unconscious\n" +
+                "\t\t • Blue lips or fingertips\n" +
+                "\t\t • Dehydration (vomiting)\n" +
+                "\t\t • Rapid pulse\n" +
+                "\t\t • Cold clammy hands/feet\n");
         tipsView.setTextColor(Color.BLACK);
-        tipsView.setTextSize(20);
+        tipsView.setTextSize(23);
+
         // create a back button
         Button backButton = new Button( this );
         backButton.setText( "Back" );
@@ -177,6 +226,7 @@ public class TipsActivity extends AppCompatActivity {
         });
 
         scrollView.addView(tipsView);
+        layout.addView(titleView, paramT);
         layout.addView( scrollView );
 
         // add back button at bottom
