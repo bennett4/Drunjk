@@ -21,7 +21,7 @@ public class Draw extends View {
     private double[] bacArray;
     private double initialHour;
     private static final int BLACK = Color.BLACK;
-    private static final int WHITE = Color.WHITE;
+    private static final int WHITE =  Color.rgb(245, 227, 190);
     private int backgroundCol = BLACK;
     private int graphCol = WHITE;
 
