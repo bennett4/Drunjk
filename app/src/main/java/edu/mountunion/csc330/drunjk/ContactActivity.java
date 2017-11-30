@@ -5,7 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -255,6 +258,24 @@ public class ContactActivity extends AppCompatActivity {
             newContactButton.setTextSize(27);
             newContactButton.setTextColor(Color.rgb(100, 100, 100));
             newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+
+            // Needs fixed vvv
+            ShapeDrawable shapedrawable = new ShapeDrawable();
+            shapedrawable.setShape(new RectShape());
+
+            shapedrawable.getPaint().setColor(getResources().getColor(R.color.buttonColor));
+            shapedrawable.getPaint().setStrokeWidth(70f);
+            shapedrawable.getPaint().setStyle(Paint.Style.STROKE);
+
+            shapedrawable.getPaint().setColor(getResources().getColor(R.color.backgroundColor));
+            shapedrawable.getPaint().setStrokeWidth(10f);
+            shapedrawable.getPaint().setStyle(Paint.Style.STROKE);
+
+            newContactButton.setBackground(shapedrawable);
+            // Needs fixed ^^^
+
+            newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+
             newContactButton.setTransformationMethod(null);
             AddButtonHandler newButtonHandler = new AddButtonHandler(newContactButton);
             newContactButton.setOnClickListener(newButtonHandler);
