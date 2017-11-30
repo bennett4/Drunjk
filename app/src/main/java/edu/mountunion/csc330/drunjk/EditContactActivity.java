@@ -90,7 +90,8 @@ public class EditContactActivity extends AppCompatActivity {
     public void showDeleteConfirmationDialog(Context context) {
         Contact contact = database.selectById(contactId);
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
-        alert.setTitle("Are you sure you want to delete " + contact.getFirstName() + " "
+        alert.setTitle("Delete Contact?");
+        alert.setMessage("Are you sure you want to delete " + contact.getFirstName() + " "
                        + contact.getLastName() + " from your contacts?");
         PlayDialog deleteDialog = new PlayDialog();
         alert.setPositiveButton("YES", deleteDialog);

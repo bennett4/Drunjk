@@ -92,6 +92,7 @@ public class TipsActivity extends AppCompatActivity {
 
         // create a back button
         Button backButton = new Button( this );
+        backButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
         backButton.setText( "Back" );
 
         backButton.setOnClickListener( new View.OnClickListener( ) {
@@ -158,6 +159,7 @@ public class TipsActivity extends AppCompatActivity {
 
         // create a back button
         Button backButton = new Button( this );
+        backButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
         backButton.setText( "Back" );
 
         backButton.setOnClickListener( new View.OnClickListener( ) {
@@ -217,6 +219,7 @@ public class TipsActivity extends AppCompatActivity {
 
         // create a back button
         Button backButton = new Button( this );
+        backButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
         backButton.setText( "Back" );
 
         backButton.setOnClickListener( new View.OnClickListener( ) {

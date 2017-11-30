@@ -216,12 +216,14 @@ public class ContactActivity extends AppCompatActivity {
                 contactButtons[i].setText( contact.getFirstName() + " " + contact.getLastName() );
                 contactButtons[i].setId( contact.getId( ) );
                 contactButtons[i].setTextSize(30);
+                contactButtons[i].setBackgroundColor(getResources().getColor(R.color.buttonColor));
                 contactButtons[i].setTransformationMethod(null);
 
                 editButtons[i] = new Button( this );
                 editButtons[i].setText( "EDIT" );
                 editButtons[i].setId( contact.getId( ) );
                 editButtons[i].setTextSize(20);
+                editButtons[i].setBackgroundColor(getResources().getColor(R.color.buttonColor));
                 editButtons[i].setTransformationMethod(null);
                 editButtons[i].setPadding(40, 50, 40, 30);
                 editButtons[i].setGravity( Gravity.CENTER );
@@ -251,7 +253,8 @@ public class ContactActivity extends AppCompatActivity {
             Button newContactButton = new Button(this);
             newContactButton.setText("New Contact");
             newContactButton.setTextSize(27);
-            newContactButton.setTextColor(Color.rgb(125, 125, 125));
+            newContactButton.setTextColor(Color.rgb(100, 100, 100));
+            newContactButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
             newContactButton.setTransformationMethod(null);
             AddButtonHandler newButtonHandler = new AddButtonHandler(newContactButton);
             newContactButton.setOnClickListener(newButtonHandler);

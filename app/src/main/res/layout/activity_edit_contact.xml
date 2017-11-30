@@ -87,6 +87,7 @@
         style="@style/bacCalculatorStyle"
         android:layout_marginTop="30dp"
         android:onClick="editContact"
+        android:background="@color/buttonColor"
         android:text="Update Contact" />
 
     <Button
@@ -106,6 +107,7 @@
         android:layout_below="@id/deleteContactButton"
         style="@style/bacCalculatorStyle"
         android:onClick="cancelEdit"
+        android:background="@color/buttonColor"
         android:text="Cancel" />
 
 </RelativeLayout>

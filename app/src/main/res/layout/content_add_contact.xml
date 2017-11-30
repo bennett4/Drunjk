@@ -89,6 +89,7 @@
         style="@style/bacCalculatorStyle"
         android:layout_marginTop="30dp"
         android:onClick="addContact"
+        android:background="@color/buttonColor"
         android:text="Create New Contact" />
 
     <Button
@@ -98,6 +99,7 @@
         android:layout_below="@id/addContactButton"
         style="@style/bacCalculatorStyle"
         android:onClick="cancelAdd"
+        android:background="@color/buttonColor"
         android:text="Cancel" />
 
 

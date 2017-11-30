@@ -214,6 +214,7 @@
         android:layout_marginBottom="18dp"
         android:layout_toLeftOf="@+id/mediumTips"
         android:layout_toStartOf="@+id/mediumTips"
+        android:background="@color/buttonColor"
         android:text="Identify a Drunk"
         android:onClick="idADrunk"/>
 
@@ -224,6 +225,7 @@
         android:layout_alignLeft="@+id/lowTips"
         android:layout_alignStart="@+id/lowTips"
         android:layout_alignTop="@+id/identify"
+        android:background="@color/buttonColor"
         android:text="Help a Drunk"
         android:onClick="helpADrunk"/>
 
@@ -234,6 +236,7 @@
         android:layout_alignTop="@+id/helpADrunk"
         android:layout_toEndOf="@+id/veryHighBACLayout"
         android:layout_toRightOf="@+id/veryHighBACLayout"
+        android:background="@color/buttonColor"
         android:text="Identify Alcohol Poisoning"
         android:onClick="idAlcoholPoisoning"/>
 

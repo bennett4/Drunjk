@@ -36,6 +36,7 @@ public class GridLayoutForGraph extends RelativeLayout{
             addView(grap);
 
             Button b = new Button( context );
+            b.setBackgroundColor(getResources().getColor(R.color.buttonColor));
             b.setTextSize(15);
             b.setText("Back");
             if (h>w) {
