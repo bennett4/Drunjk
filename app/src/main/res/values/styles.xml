@@ -7,6 +7,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/background_material_light</item>
+
+        <item name="android:actionButtonStyle">@style/myMenuButtonStyle</item>
+        <item name="actionButtonStyle">@style/myMenuButtonStyle</item>
     </style>
 
     <style name="NightTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -21,6 +24,13 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="myMenuButtonStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:minWidth">30dp</item>
+        <item name="android:maxWidth">45dp</item>
+        <item name="android:width">45dp</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

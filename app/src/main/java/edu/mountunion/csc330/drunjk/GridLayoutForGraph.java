@@ -3,6 +3,7 @@ package edu.mountunion.csc330.drunjk;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -38,6 +39,7 @@ public class GridLayoutForGraph extends RelativeLayout{
             Button b = new Button( context );
             b.setBackgroundColor(getResources().getColor(R.color.buttonColor));
             b.setTextSize(15);
+            b.setBackgroundColor(ContextCompat.getColor(context, R.color.buttonColor));
             b.setText("Back");
             if (h>w) {
                 b.setX(w / 2 - 100);
