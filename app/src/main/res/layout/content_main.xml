@@ -103,7 +103,8 @@
         style = "@style/bacCalculatorStyle"
         android:text="@string/calculate"
         android:onClick="calculateBac"
-        android:layout_below="@id/timeElapsed" />
+        android:layout_below="@id/timeElapsed"
+        android:background="@color/buttonColor"/>
 
     <LinearLayout
         style = "@style/bacCalculatorStyle"
