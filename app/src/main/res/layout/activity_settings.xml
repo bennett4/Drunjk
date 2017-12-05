@@ -17,11 +17,12 @@
         android:id="@+id/disclaimerText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/launcher"
+        android:layout_alignStart="@+id/launcher"
+        android:layout_below="@+id/disclaimerTitle"
         android:gravity="center_horizontal"
-        android:layout_below="@id/disclaimerTitle"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:text="We are not responsible, etc. add stuff here"/>
+        android:text="The information contained in this app is not meant to provide medical advice, but to provide information to help people to better understand the mathematical levels of how alcohol affects the body. The moderate consumption of alcohol can be enjoyable, but Drunjk does not recommend that abstaining individuals should commence consuming alcohol to benefit their health. Consuming alcohol more than moderately increases the risk of both short and long-term harm to health. Information on this app may contain technical inaccuracies or typographical errors. We are not responsible for any injuries, accidents, or incidents based on the information presented on the app. Alcohol affects each person differently, so know your limits and your friends' limits to keep yourself safe during drinking activities. "
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/specialThanks"

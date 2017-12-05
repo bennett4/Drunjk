@@ -18,14 +18,19 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    private String extra;
     private static final String BAC_ARRAY_KEY = "edu.mountunion.csc330.drunjk.ARRAY_OF_BAC";
     private static final String EXTRA_INT = "edu.mountunion.csc330.drunjk.HOURS_ELAPSED";
+    private static final String MAIN_NAME = "edu.mountunion.csc330.drunjk.NAME";
     boolean properInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            Bundle extras = getIntent().getExtras();
+            extra = extras.getString("edu.mountunion.csc330.drunjk.NAME");
+        }catch (Exception ex) {}
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -45,16 +50,19 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_contacts:
                 Intent contactIntent = new Intent(this, ContactActivity.class);
+                contactIntent.putExtra(MAIN_NAME, "mainValue");
                 this.startActivity(contactIntent);
                 finish();
                 return true;
             case R.id.action_settings:
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                settingsIntent.putExtra(MAIN_NAME, "mainValue");
                 this.startActivity(settingsIntent);
                 finish();
                 return true;
             case R.id.action_tips:
                 Intent tipsIntent = new Intent(this, TipsActivity.class);
+                tipsIntent.putExtra(MAIN_NAME, "mainValue");
                 this.startActivity(tipsIntent);
                 finish();
                 return true;
@@ -263,7 +271,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        if (extra != null) {
+            if (extra.equals("contactValue")) {
+                Intent intent = new Intent(this, ContactActivity.class);
+                this.startActivity(intent);
+                finish();
+            } else if (extra.equals("settingsValue")) {
+                Intent intent = new Intent(this, SettingsActivity.class);
+                this.startActivity(intent);
+                finish();
+            } else if (extra.equals("tipsValue")) {
+                Intent intent = new Intent(this, TipsActivity.class);
+                this.startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(this, MainActivity.class);
+                this.startActivity(intent);
+                finish();
+            }
+        }else{
+            Intent intent = new Intent(this, MainActivity.class);
+            this.startActivity(intent);
+            finish();
+        }
     }
 
 } // end of class MainActivity

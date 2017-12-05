@@ -18,9 +18,16 @@ import android.widget.TextView;
 
 public class TipsActivity extends AppCompatActivity {
 
+    private String extra;
+    private static final String TIPS_NAME = "edu.mountunion.csc330.drunjk.NAME";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            Bundle extras = getIntent().getExtras();
+            extra = extras.getString("edu.mountunion.csc330.drunjk.NAME");
+        }catch (Exception ex) {}
         setContentView(R.layout.activity_tips);
     } // end of method onCreate
 
@@ -36,16 +43,19 @@ public class TipsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_calculator:
                 Intent calculatorIntent = new Intent(this, MainActivity.class);
+                calculatorIntent.putExtra(TIPS_NAME, "tipsValue");
                 this.startActivity(calculatorIntent);
                 finish();
                 return true;
             case R.id.action_contacts:
                 Intent contactIntent = new Intent(this, ContactActivity.class);
+                contactIntent.putExtra(TIPS_NAME, "tipsValue");
                 this.startActivity(contactIntent);
                 finish();
                 return true;
             case R.id.action_settings:
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                settingsIntent.putExtra(TIPS_NAME, "tipsValue");
                 this.startActivity(settingsIntent);
                 finish();
                 return true;
@@ -279,9 +289,29 @@ public class TipsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        this.startActivity(intent);
-        finish();
+        if (extra != null){
+            if (extra.equals("mainValue")){
+                Intent intent = new Intent(this, MainActivity.class);
+                this.startActivity(intent);
+                finish();
+            }else if(extra.equals("contactValue")){
+                Intent intent = new Intent(this, ContactActivity.class);
+                this.startActivity(intent);
+                finish();
+            }else if(extra.equals("settingsValue")){
+                Intent intent = new Intent(this, SettingsActivity.class);
+                this.startActivity(intent);
+                finish();
+            }else{
+                Intent intent = new Intent(this, MainActivity.class);
+                this.startActivity(intent);
+                finish();
+            }
+        }else{
+            Intent intent = new Intent(this, MainActivity.class);
+            this.startActivity(intent);
+            finish();
+        }
     }
 
 } // end of class TipsActivity
