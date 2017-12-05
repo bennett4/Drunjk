@@ -277,4 +277,11 @@ public class TipsActivity extends AppCompatActivity {
         setContentView( layout );
     } // end of idAlcoholPoisoning
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        this.startActivity(intent);
+        finish();
+    }
+
 } // end of class TipsActivity

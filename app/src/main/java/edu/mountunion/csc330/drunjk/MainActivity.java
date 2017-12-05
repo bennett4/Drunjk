@@ -261,4 +261,9 @@ public class MainActivity extends AppCompatActivity {
         return hoursElapsed;
     } // end of method getHoursElapsed
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
 } // end of class MainActivity
