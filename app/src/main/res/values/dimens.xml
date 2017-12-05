@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="tipsHeadingLeft">20dp</dimen>
-    <dimen name="tipsBody">55dp</dimen>
+    <dimen name="tipsBody">20dp</dimen>
 </resources>
