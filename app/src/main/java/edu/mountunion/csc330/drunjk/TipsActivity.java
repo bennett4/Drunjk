@@ -160,7 +160,7 @@ public class TipsActivity extends AppCompatActivity {
                 " 6. If they are not vomiting or done vomiting get them into a\n\t\t comfortable position to sleep\n" +
                 "\t\ta. If vomiting does not stop look to taking the person to the\n\t\t\t\tnearest ER\n" +
                 "\t\tb. Don't leave them while they sleep, vomiting could reoccur\n" +
-                " 7. Time is the best medicine so if the person is well enough to\n\t\t rest get them plenty of water and let time heal them\n");
+                " 7. Time is the best medicine so if the person is well enough to\n\t\t rest get them plenty of water and let time heal them\n\n\n\n\n\n");
         tipsView.setTextColor(Color.BLACK);
         tipsView.setTextSize(15);
 
@@ -200,6 +200,7 @@ public class TipsActivity extends AppCompatActivity {
         String header = "Signs of Alcohol Poisoning";
         TextView titleView = new TextView(this);
         titleView.setText(header);
+        titleView.setGravity(Gravity.CENTER_HORIZONTAL);
         titleView.setTextSize(34);
 
         RelativeLayout.LayoutParams paramT
@@ -212,14 +213,16 @@ public class TipsActivity extends AppCompatActivity {
 
         TextView tipsView = new TextView(this);
         tipsView.setText("\n\n\n\n" +
-                "\t\t • Breathing drastically slows\n" +
-                "\t\t • Unresponsive audibly or physically\n" +
-                "\t\t • Unconscious\n" +
-                "\t\t • Blue lips or fingertips\n" +
-                "\t\t • Dehydration (vomiting)\n" +
-                "\t\t • Rapid pulse\n" +
-                "\t\t • Cold clammy hands/feet\n");
+                "\t • Breathing drastically slows\n" +
+                "\t • Unresponsive audibly or physically\n" +
+                "\t • Unconscious\n" +
+                "\t • Blue lips or fingertips\n" +
+                "\t • Dehydration (vomiting)\n" +
+                "\t • Rapid pulse\n" +
+                "\t • Cold clammy hands/feet\n");
         tipsView.setTextColor(Color.BLACK);
+        paramT.setMargins(15,0,0,0);
+        tipsView.setLayoutParams(paramT);
         tipsView.setTextSize(23);
 
         // create a back button
