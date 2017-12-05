@@ -396,4 +396,11 @@ public class ContactActivity extends AppCompatActivity {
         } // end of method onClick for AddButtonHandler
     } // end of class AddButtonHandler
 
+    @Override
+    public void onBackPressed() {
+        Intent calculatorIntent = new Intent(this, MainActivity.class);
+        this.startActivity(calculatorIntent);
+        finish();
+    }
+
 } // end of class ContactActivity

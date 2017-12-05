@@ -120,4 +120,11 @@ public class EditContactActivity extends AppCompatActivity {
         } // end else if no selected
     } // end of method phoneAFriend
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, ContactActivity.class);
+        this.startActivity(intent);
+        finish();
+    }
+
 } // end of class EditContactActivity

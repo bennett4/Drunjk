@@ -46,5 +46,11 @@ public class SettingsActivity extends AppCompatActivity{
         } // end switch getting selected menu item
     } // end method onOptionsItemSelected
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        this.startActivity(intent);
+        finish();
+    }
 
 } // end of class SettingsActivity

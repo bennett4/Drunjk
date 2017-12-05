@@ -99,4 +99,11 @@ public class AddContactActivity extends AppCompatActivity {
 
     } // end of class TextChangeHandler
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, ContactActivity.class);
+        this.startActivity(intent);
+        finish();
+    }
+
 } // end of class AddContactActivity
