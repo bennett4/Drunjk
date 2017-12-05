@@ -90,7 +90,7 @@
         android:layout_marginTop="30dp"
         android:onClick="addContact"
         android:background="@color/buttonColor"
-        android:text="Create New Contact" />
+        android:text="  Create New Contact  " />
 
     <Button
         android:id="@+id/addContactCancelButton"
