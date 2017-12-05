@@ -15,7 +15,7 @@
         style="@style/bacCalculatorStyle"
         android:text="New Contact"
         android:textSize="40sp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="20dp" />
 
     <LinearLayout
         android:id="@+id/contactNameLayout"
