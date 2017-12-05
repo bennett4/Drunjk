@@ -37,9 +37,11 @@ import android.Manifest;
 
 public class ContactActivity extends AppCompatActivity {
 
+    private static final String CONTACT_NAME = "edu.mountunion.csc330.drunjk.NAME";
     Database database;
     int contactId;
     String contactPhoneNumber;
+    private String extra;
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
     public static final String EDIT_CONTACT_ID = "edu.mountunion.csc330.drunjk.editContactId";
 
@@ -47,6 +49,10 @@ public class ContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+        try {
+            Bundle extras = getIntent().getExtras();
+            extra = extras.getString("edu.mountunion.csc330.drunjk.NAME");
+        }catch (Exception ex) {}
         database = new Database(this);
         updateView();
     } // end of method onCreate
@@ -63,6 +69,7 @@ public class ContactActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_calculator:
                 Intent calculatorIntent = new Intent(this, MainActivity.class);
+                calculatorIntent.putExtra(CONTACT_NAME, "contactValue");
                 this.startActivity(calculatorIntent);
                 finish();
                 return true;
@@ -70,11 +77,13 @@ public class ContactActivity extends AppCompatActivity {
                 return true;
             case R.id.action_settings:
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                settingsIntent.putExtra(CONTACT_NAME, "contactValue");
                 this.startActivity(settingsIntent);
                 finish();
                 return true;
             case R.id.action_tips:
                 Intent tipsIntent = new Intent(this, TipsActivity.class);
+                tipsIntent.putExtra(CONTACT_NAME, "contactValue");
                 this.startActivity(tipsIntent);
                 finish();
                 return true;
@@ -398,9 +407,29 @@ public class ContactActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent calculatorIntent = new Intent(this, MainActivity.class);
-        this.startActivity(calculatorIntent);
-        finish();
+        if (extra != null){
+            if (extra.equals("mainValue")){
+                Intent intent = new Intent(this, MainActivity.class);
+                this.startActivity(intent);
+                finish();
+            }else if(extra.equals("settingsValue")){
+                Intent intent = new Intent(this, SettingsActivity.class);
+                this.startActivity(intent);
+                finish();
+            }else if(extra.equals("tipsValue")){
+                Intent intent = new Intent(this, TipsActivity.class);
+                this.startActivity(intent);
+                finish();
+            }else{
+                Intent intent = new Intent(this, MainActivity.class);
+                this.startActivity(intent);
+                finish();
+            }
+        }else{
+            Intent intent = new Intent(this, MainActivity.class);
+            this.startActivity(intent);
+            finish();
+        }
     }
 
 } // end of class ContactActivity
