@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_tips:
-                Intent tipsIntent = new Intent(this, TipsActivity.class);
+                Intent tipsIntent = new Intent(this, DrunjkTestActivity.class);
                 tipsIntent.putExtra(MAIN_NAME, "mainValue");
                 this.startActivity(tipsIntent);
                 finish();
