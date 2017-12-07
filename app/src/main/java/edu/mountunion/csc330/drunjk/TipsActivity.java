@@ -6,6 +6,11 @@ import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.CharacterStyle;
+import android.text.style.LeadingMarginSpan;
+import android.text.style.TextAppearanceSpan;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,6 +78,8 @@ public class TipsActivity extends AppCompatActivity {
         // Set Title View
         String header = "How to Recognize a Drunk";
         TextView titleView = new TextView(this);
+        titleView.setPadding(10,25,10,0);
+        titleView.setGravity(Gravity.CENTER_HORIZONTAL);
         titleView.setText(header);
         titleView.setTextSize(34);
 
@@ -86,14 +93,24 @@ public class TipsActivity extends AppCompatActivity {
 
         // Set Content View
         TextView tipsView = new TextView(this);
-        tipsView.setText( "\n\n\n\n" +
-                "\t\t • Slurred speech\n" +
-                "\t\t • Trouble with balance\n" +
-                "\t\t • Stumbling\n" +
-                "\t\t • Bloodshot, glassy or watery eyes\n" +
-                "\t\t • Unusual behavior\n" +
-                "\t\t • Aggressive, loud, or inappropriate\n" +
-                "\t\t • Trouble remembering things\n");
+        String tvs = "\n\n\n\n" +
+                " • Slurred speech\n\n" +
+                " • Trouble with balance\n\n" +
+                " • Stumbling\n\n" +
+                " • Bloodshot, glassy or watery eyes\n\n" +
+                " • Unusual behavior\n\n" +
+                " • Aggressive, loud, or inappropriate\n\n" +
+                " • Trouble remembering things\n\n\n\n";
+        LeadingMarginSpan spann = new LeadingMarginSpan.Standard(25,85);
+        SpannableString styledSource = new SpannableString(tvs);
+        styledSource.setSpan (spann, 0, styledSource.length(),
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        tipsView.setTextColor(Color.BLACK);
+        tipsView.setTextSize(15);
+        tipsView.setText(styledSource, TextView.BufferType.SPANNABLE);
+
+
+
         tipsView.setTextColor(Color.BLACK);
         tipsView.setTextSize(23);
 
@@ -148,22 +165,26 @@ public class TipsActivity extends AppCompatActivity {
         paramT.setMargins( 0, 25, 0, 50 );
 
         TextView tipsView = new TextView(this);
-        tipsView.setText("\n\n\n\n\n" +
-                " 1. Cut off the person from drinking any further\n" +
-                " 2. Try to get them into a calmer and controlled environment\n" +
-                "\t\ta. Someone’s room or a bathroom\n" +
-                " 3. Try and get the person to drink some water\n" +
-                " 4. If they are way too intoxicated to the point where vomiting\n\t\t  is or may occur get them to a toilet or trash can\n" +
-                " 5. If the person is unresponsive and you can’t get\n\t\t them to stand…\n" +
-                "\t\ta. Lay them down and on their side with their bottom arm to\n\t\t\t\trest their head on\n" +
-                "\t\tb. Getting them on their side will allow for them to have the\n\t\t\t\tvomit leave the body rather than chocking on it\n" +
-                " 6. If they are not vomiting or done vomiting get them into a\n\t\t comfortable position to sleep\n" +
-                "\t\ta. If vomiting does not stop look to taking the person to the\n\t\t\t\tnearest ER\n" +
-                "\t\tb. Don't leave them while they sleep, vomiting could reoccur\n" +
-                " 7. Time is the best medicine so if the person is well enough to\n\t\t rest get them plenty of water and let time heal them\n");
+        String tvs = "\n\n\n\n\n" +
+                " 1. Cut off the person from drinking any further\n\n" +
+                " 2. Try to get them into a calmer and controlled environment\n\n" +
+                "\t\ta. Someone’s room or a bathroom\n\n" +
+                " 3. Try and get the person to drink some water\n\n" +
+                " 4. If they are way too intoxicated to the point where vomiting is or may occur get them to a toilet or trash can\n\n" +
+                " 5. If the person is unresponsive and you can’t get them to stand…\n\n" +
+                "\t\ta. Lay them down and on their side with their bottom arm to rest their head on\n\n" +
+                "\t\tb. Getting them on their side will allow for them to have the vomit leave the body rather than chocking on it\n\n" +
+                " 6. If they are not vomiting or done vomiting get them into a comfortable position to sleep\n\n" +
+                "\t\ta. If vomiting does not stop look to taking the person to the nearest ER\n\n" +
+                "\t\tb. Don't leave them while they sleep, vomiting could reoccur\n\n" +
+                " 7. Time is the best medicine so if the person is well enough to rest get them plenty of water and let time heal them\n\n\n\n\n\n";
+        LeadingMarginSpan spann = new LeadingMarginSpan.Standard(25,85);
+        SpannableString styledSource = new SpannableString(tvs);
+        styledSource.setSpan (spann, 0, styledSource.length(),
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         tipsView.setTextColor(Color.BLACK);
         tipsView.setTextSize(15);
-
+        tipsView.setText(styledSource, TextView.BufferType.SPANNABLE);
         // create a back button
         Button backButton = new Button( this );
         backButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
@@ -199,7 +220,9 @@ public class TipsActivity extends AppCompatActivity {
         // Set Title View
         String header = "Signs of Alcohol Poisoning";
         TextView titleView = new TextView(this);
+        titleView.setPadding(10,25,10,0);
         titleView.setText(header);
+        titleView.setGravity(Gravity.CENTER_HORIZONTAL);
         titleView.setTextSize(34);
 
         RelativeLayout.LayoutParams paramT
@@ -208,20 +231,26 @@ public class TipsActivity extends AppCompatActivity {
                 RelativeLayout.LayoutParams.WRAP_CONTENT );
         paramT.addRule( RelativeLayout.ALIGN_PARENT_TOP );
         paramT.addRule( RelativeLayout.CENTER_HORIZONTAL );
-        paramT.setMargins( 0, 25, 0, 50 );
+        paramT.setMargins( 0, 50, 0, 50 );
 
         TextView tipsView = new TextView(this);
-        tipsView.setText("\n\n\n\n" +
-                "\t\t • Breathing drastically slows\n" +
-                "\t\t • Unresponsive audibly or physically\n" +
-                "\t\t • Unconscious\n" +
-                "\t\t • Blue lips or fingertips\n" +
-                "\t\t • Dehydration (vomiting)\n" +
-                "\t\t • Rapid pulse\n" +
-                "\t\t • Cold clammy hands/feet\n");
+        String tvs = "\n\n\n\n" +
+                " • Breathing drastically slows\n\n" +
+                " • Unresponsive audibly or physically\n\n" +
+                " • Unconscious\n\n" +
+                " • Blue lips or fingertips\n\n" +
+                " • Dehydration (vomiting)\n\n" +
+                " • Rapid pulse\n\n" +
+                " • Cold clammy hands/feet\n\n\n";
+        LeadingMarginSpan spann = new LeadingMarginSpan.Standard(25,85);
+        SpannableString styledSource = new SpannableString(tvs);
+        styledSource.setSpan (spann, 0, styledSource.length(),
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         tipsView.setTextColor(Color.BLACK);
+        paramT.setMargins(15,0,0,0);
+        tipsView.setLayoutParams(paramT);
         tipsView.setTextSize(23);
-
+        tipsView.setText(styledSource, TextView.BufferType.SPANNABLE);
         // create a back button
         Button backButton = new Button( this );
         backButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));

@@ -38,20 +38,21 @@ public class GridLayoutForGraph extends RelativeLayout{
 
             Button b = new Button( context );
             b.setBackgroundColor(getResources().getColor(R.color.buttonColor));
-            b.setTextSize(h/100);
             b.setBackgroundColor(ContextCompat.getColor(context, R.color.buttonColor));
             b.setText("Back");
             b.getLayoutParams();
+            b.setOnClickListener(new ButtonHandler());
             if (h>w) {
+                b.setTextSize(h/100);
                 b.setX(w / 2 - (w/5)/2);
                 b.setY(h - (h/10)-(h/80));
+                addView(b, w/5,h/15);
             }else{
+                b.setTextSize(w/100);
                 b.setX(w / 8 - 130);
                 b.setY(h - 250);
+                addView(b, h/5,w/15);
             }
-            b.setOnClickListener(new ButtonHandler());
-            addView(b, w/5,h/15);
-
         }
 
 

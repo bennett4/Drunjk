@@ -1,20 +1,12 @@
 package edu.mountunion.csc330.drunjk;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 public class Draw extends View {
     private Paint paint;
@@ -66,7 +58,6 @@ public class Draw extends View {
         int tikOffset = (fromRight-fromLeft)/5;
         int tikOffsetV = (fromBottom-fromTop)/6;
         int topToBottom = fromBottom-fromTop;
-        //int leftToRight = fromRight-fromLeft;
         double overLimit = bacArray[0]+.015;
         if (bacArray[0] == 0.0){
             overLimit = bacArray[0];
@@ -151,23 +142,41 @@ public class Draw extends View {
         int lineEndY = getAlternativePlacementHeight(bacArray[4], lowerLimit, topToBottom, fromBottom);
         float newLow;
 
-        if(lineEndY == fromBottom){
-            newLow = intersect(topToBottom, fromBottom, lowerLimit);
-            float lineEndX = getPlacementWidth(newLow, tikOffset, fromLeft);
-            canvas.drawLine(tikO[0]-tikOffset, lineStartY, lineEndX, lineEndY, paint);
+        /*if((int)initialHour == 1 || (int)initialHour == 0) {
+            lineStartY = getAlternativePlacementHeight(bacArray[0], lowerLimit, topToBottom, fromBottom);
+            if (lineEndY == fromBottom) {
+                newLow = intersect(topToBottom, fromBottom, lowerLimit);
+                float lineEndX = getPlacementWidth(newLow, tikOffset, fromLeft);
+                canvas.drawLine(tikO[0], lineStartY, lineEndX, lineEndY, paint);
+            } else {
+                canvas.drawLine(tikO[0], lineStartY, tikO[4], lineEndY, paint);
+            }
+            for (int i = 0; i < 5; i++) {
+                canvas.drawLine(tikO[i], tikUp, tikO[i], tikDown, paint);
+                canvas.drawText((hour + i) + "", tikO[i] - 10, tikDown + 45, paint);
+                dotHeight = getPlacementHeight(bacArray[i], lowerLimit, topToBottom, fromBottom);
+                paint.setColor(ContextCompat.getColor(cont, R.color.colorAccent));
+                canvas.drawLine(tikO[i], dotHeight - weightOffset, tikO[i], dotHeight + weightOffset, paint);
+                paint.setColor(ContextCompat.getColor(cont, backgroundCol));
+            }
         }
-        else{
-            canvas.drawLine(tikO[0]-tikOffset, lineStartY, tikO[4], lineEndY, paint);
-        }
-        for (int i = 0; i < 5; i++) {
-            canvas.drawLine(tikO[i], tikUp, tikO[i], tikDown, paint);
-            canvas.drawText((hour+i)+"", tikO[i]-10, tikDown+45, paint);
-            dotHeight = getPlacementHeight(bacArray[i], lowerLimit, topToBottom, fromBottom);
-            paint.setColor(ContextCompat.getColor(cont, R.color.colorAccent));
-            canvas.drawLine(tikO[i], dotHeight-weightOffset, tikO[i], dotHeight+weightOffset, paint);
-            paint.setColor(ContextCompat.getColor(cont, backgroundCol));
-        }
-
+        else{*/
+            if (lineEndY == fromBottom) {
+                newLow = intersect(topToBottom, fromBottom, lowerLimit);
+                float lineEndX = getPlacementWidth(newLow, tikOffset, fromLeft);
+                canvas.drawLine(tikO[0] - tikOffset, lineStartY, lineEndX, lineEndY, paint);
+            } else {
+                canvas.drawLine(tikO[0] - tikOffset, lineStartY, tikO[4], lineEndY, paint);
+            }
+            for (int i = 0; i < 5; i++) {
+                canvas.drawLine(tikO[i], tikUp, tikO[i], tikDown, paint);
+                canvas.drawText((hour + i) + "", tikO[i] - 10, tikDown + 45, paint);
+                dotHeight = getPlacementHeight(bacArray[i], lowerLimit, topToBottom, fromBottom);
+                paint.setColor(ContextCompat.getColor(cont, R.color.colorAccent));
+                canvas.drawLine(tikO[i], dotHeight - weightOffset, tikO[i], dotHeight + weightOffset, paint);
+                paint.setColor(ContextCompat.getColor(cont, backgroundCol));
+            }
+        //}
 
         // graph title?
 
