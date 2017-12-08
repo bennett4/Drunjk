@@ -74,6 +74,9 @@ public class ContactActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_contacts:
+                Intent eggIntent = new Intent(this, DrunjkTestActivity.class);
+                eggIntent.putExtra(CONTACT_NAME, "mainValue");
+                this.startActivity(eggIntent);
                 return true;
             case R.id.action_settings:
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);

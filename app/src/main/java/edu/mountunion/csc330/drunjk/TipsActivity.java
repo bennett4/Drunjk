@@ -65,6 +65,9 @@ public class TipsActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_tips:
+                Intent eggIntent = new Intent(this, DrunjkTestActivity.class);
+                eggIntent.putExtra(TIPS_NAME, "tipsValue");
+                this.startActivity(eggIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

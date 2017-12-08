@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_calculator:
+                Intent eggIntent = new Intent(this, DrunjkTestActivity.class);
+                eggIntent.putExtra(MAIN_NAME, "mainValue");
+                this.startActivity(eggIntent);
                 return true;
             case R.id.action_contacts:
                 Intent contactIntent = new Intent(this, ContactActivity.class);

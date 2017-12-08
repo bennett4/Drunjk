@@ -43,6 +43,9 @@ public class SettingsActivity extends AppCompatActivity{
                 finish();
                 return true;
             case R.id.action_settings:
+                Intent eggIntent = new Intent(this, DrunjkTestActivity.class);
+                eggIntent.putExtra(STRING_NAME, "settingsValue");
+                this.startActivity(eggIntent);
                 return true;
             case R.id.action_tips:
                 Intent tipsIntent = new Intent(this, TipsActivity.class);
