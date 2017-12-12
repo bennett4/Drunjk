@@ -107,10 +107,11 @@ public class DrunjkTestActivity extends AppCompatActivity {
             int checkNum = editText.getText().length();
             for (int j = 0; j < checkNum; j++){
                 if (!(checkString.substring(j,j+1)).equals(TEST.substring(j,j+1))){
-                    tipsView.setText("WRONG" + checkNum + " " + TEST.length());
+                    tipsView.setText("WRONG");
                     return;
                 }
             }
+            tipsView.setText(TEST);
             if(checkNum == TEST.length()){
                 tipsView.setText("Right!");
                 editText.setText("");
