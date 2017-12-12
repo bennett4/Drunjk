@@ -43,7 +43,8 @@
         <activity
             android:name=".TipsActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".DrunjkTestActivity" />
+        <activity android:name=".DrunjkTestActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
