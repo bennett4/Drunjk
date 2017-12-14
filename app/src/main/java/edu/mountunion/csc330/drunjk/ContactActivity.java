@@ -119,7 +119,7 @@ public class ContactActivity extends AppCompatActivity {
 
     public void showSettingsDialog(Context context) {
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
-        alert.setTitle("Please go to your settings and edit phone permissions to enable calling.");
+        alert.setMessage("Please go to your settings and edit phone permissions to enable calling.");
         SettingsDialog settings = new SettingsDialog();
         alert.setPositiveButton("OK", settings);
         alert.show();
